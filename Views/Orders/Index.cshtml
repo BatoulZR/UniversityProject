@@ -1,0 +1,97 @@
+﻿@model IEnumerable<SeniorProject.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<h1>Orders ' Request List</h1>
+<br />
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.supervisorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.specifityNotes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateOfOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateOfUsage)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.confirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LabDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.companyID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.project)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.supervisorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.specifityNotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfUsage)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.confirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LabDay.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.project.fundAmount)
+            </td>
+            <td>
+                <a asp-action="Confirm" asp-controller="Orders" asp-route-id="@item.ID">Confirm</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

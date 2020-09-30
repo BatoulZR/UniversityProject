@@ -1,0 +1,61 @@
+
+@model IEnumerable<SeniorProject.Models.ItemGrid>
+
+@{
+    ViewData["Title"] = "Grid";
+}
+
+<html>
+<head>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+            grid-gap: 2px;
+            background-color: #E1F5FE;
+            padding: 10px;
+        }
+
+            .grid-container > div {
+                background-color: rgba(255, 255, 255, 0.8);
+                text-align: center;
+                padding: 20px 0;
+                font-size: 30px;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Bacterias</h1>
+
+    <div class="grid-container">
+
+        @foreach (var item in Model)
+        {
+            @if (item.Id == 0)
+            {
+                if (item.X == 0 || item.Y == 0)
+                {
+                    <div>@item.Name</div>
+                }
+                else
+                {
+                    <div><a style="text-decoration: none" asp-controller="Bacteria" asp-action="CreateBacteria" asp-route-x="@item.X" asp-route-y="@item.Y" asp-route-boxID="@item.boxId">+</a></div>
+                }
+            }
+            else
+            {
+                <div><a style="text-decoration: none" asp-controller="Bacteria" asp-action="Edit" asp-route-id="@item.Id">@item.Name</a></div>
+            }
+
+        }
+
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+</html>
+

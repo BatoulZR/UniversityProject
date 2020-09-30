@@ -1,0 +1,84 @@
+﻿@model SeniorProject.Models.Rotation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rotation</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.entrancePermission)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.entrancePermission)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.photosAndDemandLetter)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.photosAndDemandLetter)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.inventory)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.inventory)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cafeteriaFees)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cafeteriaFees)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.eventsAndCeremonies)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.eventsAndCeremonies)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.stockUpdates)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.stockUpdates)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.orderingConsumables)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.orderingConsumables)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.month)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.month)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.year)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.year)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LabDay)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LabDay.ID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.User.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

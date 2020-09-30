@@ -1,0 +1,84 @@
+﻿@model SeniorProject.Models.Assesment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Assesment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="studentId" class="control-label"></label>
+                <select asp-for="studentId" class="form-control" asp-items="ViewBag.studentId"></select>
+                <span asp-validation-for="studentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TraineeId" class="control-label"></label>
+                <select asp-for="TraineeId" class="form-control" asp-items="ViewBag.TraineeId"></select>
+                <span asp-validation-for="TraineeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date" class="control-label"></label>
+                <input asp-for="date" class="form-control" />
+                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quality" class="control-label"></label>
+                <input asp-for="quality" class="form-control" />
+                <span asp-validation-for="quality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="work_habits" class="control-label"></label>
+                <input asp-for="work_habits" class="form-control" />
+                <span asp-validation-for="work_habits" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="communication" class="control-label"></label>
+                <input asp-for="communication" class="form-control" />
+                <span asp-validation-for="communication" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="attitude" class="control-label"></label>
+                <input asp-for="attitude" class="form-control" />
+                <span asp-validation-for="attitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="professionalism" class="control-label"></label>
+                <input asp-for="professionalism" class="form-control" />
+                <span asp-validation-for="professionalism" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="leadership" class="control-label"></label>
+                <input asp-for="leadership" class="form-control" />
+                <span asp-validation-for="leadership" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LabDayId" class="control-label"></label>
+                <select asp-for="LabDayId" class="form-control" asp-items="ViewBag.LabDayId"></select>
+                <span asp-validation-for="LabDayId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

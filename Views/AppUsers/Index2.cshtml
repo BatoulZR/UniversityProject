@@ -1,0 +1,48 @@
+@model IEnumerable<SeniorProject.Data.AppUser>
+
+
+    @{
+        ViewData["Title"] = "Index2";
+    }
+
+    <h1>Accounts Management</h1>
+
+
+    <script src="~/js/appUserConfirmButton.js"></script>
+    <table class="table">
+        <thead>
+            <tr>
+               
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.role)
+                </th>
+                
+              
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.role)
+                    </td>
+                   
+                    
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                    </tr>
+            }
+            </tbody>
+    </table>
+

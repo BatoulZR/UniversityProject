@@ -1,0 +1,104 @@
+﻿@model SeniorProject.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" />
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fundingorganism" class="control-label"></label>
+                <input asp-for="fundingorganism" class="form-control" />
+                <span asp-validation-for="fundingorganism" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fundingDuration" class="control-label"></label>
+                <input asp-for="fundingDuration" class="form-control" />
+                <span asp-validation-for="fundingDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="fundAmount" class="control-label"></label>
+                <input asp-for="fundAmount" class="form-control" />
+                <span asp-validation-for="fundAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="from" class="control-label"></label>
+                <input asp-for="from" class="form-control" />
+                <span asp-validation-for="from" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="to" class="control-label"></label>
+                <input asp-for="to" class="form-control" />
+                <span asp-validation-for="to" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="reasearchAssistantFees" /> @Html.DisplayNameFor(model => model.reasearchAssistantFees)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="congress" /> @Html.DisplayNameFor(model => model.congress)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="fieldFees" /> @Html.DisplayNameFor(model => model.fieldFees)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="publicationAndPatentFees" /> @Html.DisplayNameFor(model => model.publicationAndPatentFees)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="consumables" /> @Html.DisplayNameFor(model => model.consumables)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="machinesAndEquipements" /> @Html.DisplayNameFor(model => model.machinesAndEquipements)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="others" class="control-label"></label>
+                <textarea asp-for="others" class="form-control"></textarea>
+                <span asp-validation-for="others" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="collaborationOrNot" /> @Html.DisplayNameFor(model => model.collaborationOrNot)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="LabDayId" class="control-label"></label>
+                <select asp-for="LabDayId" class="form-control" asp-items="ViewBag.LabDayId"></select>
+                <span asp-validation-for="LabDayId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

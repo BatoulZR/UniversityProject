@@ -1,0 +1,37 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Microbiology Lab</h1>
+    <p>Guests can only send form requests, or <a href="https://docs.microsoft.com/aspnet/core">Sign Up</a>.</p>
+</div>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href='~/css/homePage.css' rel='stylesheet'>
+</head>
+
+
+<body>
+
+    <div class="main">
+        <a class="example_b"  asp-controller="Forms" asp-action="CreateMembership" >Membership Request</a>
+        <a class="example_b"  asp-controller="Forms" asp-action="CreateInternship" >Internship Request</a>
+       
+
+    </div>
+    <div class="main1">
+        <a class="example_b" asp-controller="Forms" asp-action="CreateTrainingPre">Training Pre-Registration Request</a>
+        <a class="example_b" asp-controller="Forms" asp-action="CreateFreeForm">Free form</a>
+
+    </div>
+
+
+
+</body>
+
+</html>

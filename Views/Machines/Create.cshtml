@@ -1,0 +1,71 @@
+@model SeniorProject.Models.Machine
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Machine</h1>
+
+<h4>New</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serialNumber" class="control-label"></label>
+                <input asp-for="serialNumber" class="form-control" />
+                <span asp-validation-for="serialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="arrivalDate" class="control-label"></label>
+                <input asp-for="arrivalDate" class="form-control" id="datePicker" />
+                <span asp-validation-for="arrivalDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="notes" class="control-label"></label>
+                <textarea asp-for="notes" class="form-control"></textarea>
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="room" class="control-label"></label>
+                <select asp-for="room" class="form-control">
+                    <option>Storage Room</option>
+                    <option>Refrigeration Room</option>
+                    <option>Meeting Room</option>
+                    <option>Microbiology Department</option>
+                    <option>Molecular Department</option>
+                    <option>Cell Culture Department</option>
+                    <option>Mycology Department</option>
+                </select>
+               
+                </div>
+
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="calibration" /> @Html.DisplayNameFor(model => model.calibration)
+                    </label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="adminHome" asp-controller="Home">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+<script>
+    document.getElementById('datePicker').valueAsDate = new Date();
+</script>

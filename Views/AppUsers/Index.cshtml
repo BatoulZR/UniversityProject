@@ -1,0 +1,148 @@
+@model IEnumerable<SeniorProject.Data.AppUser>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Accounts Requests</h1>
+
+
+<script src="~/js/appUserConfirmButton.js"></script>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.AdminConfirmation)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.NormalizedUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.NormalizedEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailConfirmed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PasswordHash)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecurityStamp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ConcurrencyStamp)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                Choose abel
+            </th>
+            <th>
+                Confirmation
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.LockoutEnd)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LockoutEnabled)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccessFailedCount)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <form asp-controller="AppUsers" asp-action="Confirm" asp-route-id="item.Id">
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.AdminConfirmation)
+        </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.NormalizedUserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NormalizedEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordHash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
+        </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccessFailedCount)
+        </td>*@
+                <td>
+                    @*<form asp-action="Create">
+                <div class="form-group">
+
+                    <select asp-for="Items" class="form-control" asp-items="ViewBag"></select>
+                </div>
+            </form>*@
+
+
+                    <select asp-for="@item.role" name="dropdown">
+                        <option value=" Admin ">Admin</option>
+                        <option value=" Trainee">Trainee</option>
+                        <option value=" M2 Student ">M2 Student</option>
+                        <option value=" PHD Student">PHD Student</option>
+                        <option value=" PHD">PHD</option>
+                        <option value=" Assistant">Assistant</option>
+                    </select>
+                    @*<select multiple="multiple" asp-for="Role" asp-items=(new SelectList("Admin", "Trainee", "Assistant", "PHD", "PHD Student", "M2 Student"))
+            </select>*@
+                </td>
+                <td>
+                    <input class="btn btn-primary" type="submit" value="Confirm this request">
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Confirm Request </a>
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </form>
+    </tbody>
+</table>

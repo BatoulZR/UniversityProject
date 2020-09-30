@@ -1,0 +1,116 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    /*background: url(/images/iStock-1211544068.jpg);
+    background-size: cover;*/
+}
+
+.h1 {
+    color: white;
+    font-size: 80px;
+}
+
+.information {
+    font-size: 25px;
+    color: #01092f;
+    font: italic;
+    font-family: 'Century Gothic';
+}
+
+
+.main {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate( -50%,-50%);
+    border: 1px solid rgba(0, 0, 0, 0.00);
+    /*border-radius:10px;*/
+    overflow: hidden;
+}
+
+/*.main a{
+    color:ghostwhite;
+    text-decoration:none;
+    background:royalblue;
+    padding :15px 15px;
+    float:left;
+    transition:.2s;
+}*/
+
+
+/*.main a:hover{
+    background:#0b8197;
+    color:aliceblue;
+}*/
+
+.main1 {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate( -50%,-50%);
+    border: 1px solid rgba(0, 0, 0, 0.00);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%,-50%);
+    border: 1px solid rgba(0, 0, 0, 0.00);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.main3 {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate( -50%,-50%);
+    border: 1px solid rgba(0, 0, 0, 0.00);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+
+/*.main1 a {
+        color: ghostwhite;
+        text-decoration: none;
+        background: royalblue;
+        padding: 15px 15px;
+        float: left;
+        transition: .2s;
+    }
+
+
+        .main1 a:hover {
+            background: #0b8197;
+            color: aliceblue;
+        }*/
+
+
+.example_b {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #60a3bc;
+    padding: 20px;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+    padding: 15px 15px;
+}
+
+    .example_b:hover {
+        text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+        transition: all 0.4s ease 0s;
+    }
+
+.exc {
+    color: aliceblue;
+}

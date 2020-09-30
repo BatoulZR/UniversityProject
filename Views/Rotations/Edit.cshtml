@@ -1,0 +1,84 @@
+﻿@model SeniorProject.Models.Rotation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Rotation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="entrancePermission" class="control-label"></label>
+                <input asp-for="entrancePermission" class="form-control" />
+                <span asp-validation-for="entrancePermission" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="photosAndDemandLetter" class="control-label"></label>
+                <input asp-for="photosAndDemandLetter" class="form-control" />
+                <span asp-validation-for="photosAndDemandLetter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="inventory" class="control-label"></label>
+                <input asp-for="inventory" class="form-control" />
+                <span asp-validation-for="inventory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cafeteriaFees" class="control-label"></label>
+                <input asp-for="cafeteriaFees" class="form-control" />
+                <span asp-validation-for="cafeteriaFees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eventsAndCeremonies" class="control-label"></label>
+                <input asp-for="eventsAndCeremonies" class="form-control" />
+                <span asp-validation-for="eventsAndCeremonies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="stockUpdates" class="control-label"></label>
+                <input asp-for="stockUpdates" class="form-control" />
+                <span asp-validation-for="stockUpdates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="orderingConsumables" class="control-label"></label>
+                <input asp-for="orderingConsumables" class="form-control" />
+                <span asp-validation-for="orderingConsumables" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="month" class="control-label"></label>
+                <input asp-for="month" class="form-control" />
+                <span asp-validation-for="month" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="year" class="control-label"></label>
+                <input asp-for="year" class="form-control" />
+                <span asp-validation-for="year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LabDayId" class="control-label"></label>
+                <select asp-for="LabDayId" class="form-control" asp-items="ViewBag.LabDayId"></select>
+                <span asp-validation-for="LabDayId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
