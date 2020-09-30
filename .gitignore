@@ -1,1 +1,3 @@
 obj/Debug/netcoreapp3.1
+*.suo
+.dtbcache.v2
