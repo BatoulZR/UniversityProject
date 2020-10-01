@@ -76,10 +76,10 @@ namespace SeniorProject.Controllers
             return View(experiment);
         }
 
-        public IActionResult ReserveEquipments (Experiment experiment)
+       /* public IActionResult ReserveEquipments (Experiment experiment)
         {
             return View(ReserveEquipments);
-        }
+        }*/
 
 
         // GET: Experiments/Edit/5

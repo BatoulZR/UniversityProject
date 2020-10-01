@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SeniorProject.Models.TestingAndCalibration>
+@model IEnumerable<SeniorProject.Models.TestingAndCalibration>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,9 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.machine)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.User)
             </th>
@@ -33,9 +31,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.machine.ID)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.User.Id)
             </td>

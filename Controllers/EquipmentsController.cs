@@ -164,6 +164,14 @@ namespace SeniorProject.Controllers
             return View(list);
         }
 
+        public IActionResult machines()
+        {
+            var list = _context.Equipment.ToList<Equipment>();
+
+            return View(list);
+        }
+
+
         public IActionResult furnitures()
         {
             var list = _context.Equipment.ToList<Equipment>();

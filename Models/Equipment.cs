@@ -16,6 +16,10 @@ namespace SeniorProject.Models
         public string type { get; set; }
         [DisplayName("Name")]
         public string name { get; set; }
+
+        [DisplayName("Serial Number")]
+        public string serialNumber { get; set; }
+
         [DisplayName("Weight")]
         public int? weight { get; set; }
         [DisplayName("Units")]
@@ -37,10 +41,34 @@ namespace SeniorProject.Models
         [DisplayName("Room")]
         public string room { get; set; }
 
+
+        [DisplayName("Calibration")]
+        public Boolean calibration { get; set; }
+
         public Boolean inUse { get; set; }
 
+        [Required]
+        [DisplayName("Quantity Used")]
+        public int quantityUsed { get; set; }
 
-        public virtual ICollection<UsedEquipment> UsedEquipments { get; set; }
+
+        [DataType(DataType.Time)]
+        public TimeSpan from { get; set; }
+
+
+        [DataType(DataType.Time)]
+        public TimeSpan to { get; set; }
+
+
+        [Required]
+        [DisplayName("Experiment ID")]
+        public int exId { get; set; }
+        [ForeignKey("ex_id")]
+        public virtual Experiment Experiment { get; set; }
+
+
+
+
 
 
     }
