@@ -37,6 +37,8 @@ namespace SeniorProject.Models
         [DisplayName("Room")]
         public string room { get; set; }
 
+        public Boolean inUse { get; set; }
+
 
         public virtual ICollection<UsedEquipment> UsedEquipments { get; set; }
 

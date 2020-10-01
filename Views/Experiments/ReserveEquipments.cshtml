@@ -1,0 +1,36 @@
+@model SeniorProject.Models.Experiment
+
+
+@{
+    ViewData["Title"] = "ReserveEquipments";
+}
+
+<h1>Reserve Equipments</h1>
+
+<div class="row">
+    <div class="col-md-4">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="UsedEquipments" class="control-label"></label>
+            <select multiple size="5" asp-for="UsedEquipments" class="form-control">
+                @{ foreach (var item in Model.UsedEquipments )
+                        if (item.name="laal")
+                     <option> item.name </option>
+
+
+                        }
+
+            </select>
+            <span asp-validation-for="UsedEquipments" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+
+    </div>
+</div>
+

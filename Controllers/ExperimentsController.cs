@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,9 +50,9 @@ namespace SeniorProject.Controllers
         // GET: Experiments/Create
         public IActionResult Create()
         {
-            ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID");
+           /* ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount");
+            ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount");*/
             return View();
         }
 
@@ -65,15 +65,22 @@ namespace SeniorProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(experiment);
-                await _context.SaveChangesAsync();
+               /* _context.Add(experiment);
+                await _context.SaveChangesAsync();*/
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID", experiment.LabDayId);
+            /*ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID", experiment.LabDayId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", experiment.UserId);
-            ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount", experiment.projectId);
+            ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount", experiment.projectId);*/
             return View(experiment);
         }
+
+        public IActionResult ReserveEquipments (Experiment experiment)
+        {
+            return View(ReserveEquipments);
+        }
+
 
         // GET: Experiments/Edit/5
         public async Task<IActionResult> Edit(int? id)
