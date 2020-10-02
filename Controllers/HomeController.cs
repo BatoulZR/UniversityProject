@@ -45,6 +45,11 @@ namespace SeniorProject.Controllers
             return View();
         }
 
+        public IActionResult FreezersPage()
+        {
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {
