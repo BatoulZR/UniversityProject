@@ -125,7 +125,7 @@ namespace SeniorProject.Data
         
         
 
-        public DbSet<SeniorProject.Models.Machine> Machine { get; set; }
+        
 
         
         

@@ -34,7 +34,9 @@ namespace SeniorProject.Models
         public int Desc { get; set; }
 
 
-        public virtual ICollection<UsedEquipment> UsedEquipments { get; set; }
+        public virtual ICollection<Equipment> Equipments { get; set; }
+
+        
 
         public virtual ICollection<Biowaste> Biowastes { get; set; }
 
