@@ -17,6 +17,8 @@ namespace SeniorProject.Models
         [DisplayName("Name")]
         public string name { get; set; }
 
+        public string Capacity { get; set; }
+
         [DisplayName("Serial Number")]
         public string serialNumber { get; set; }
 
