@@ -134,7 +134,7 @@ namespace SeniorProject.Controllers
                 for (int i = 0; i < equipments.Length; i++)
                 {
                     Equipment equipment = _context.Equipment.FirstOrDefault(a => a.name.Equals(equipments[i]));
-                    equipment.inUse = true;
+                   // equipment.inUse = true;
                     experiment2.Equipments.Add(equipment);
                     
 
