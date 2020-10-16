@@ -5,17 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using SeniorProject.Data;
 using SeniorProject.Models;
+using SQLitePCL;
+using Microsoft.AspNetCore.Identity;
 
 namespace SeniorProject.Controllers
 {
     public class ExperimentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<AppUser> _userManager;
+        // private UserMa _userManager;
 
-        public ExperimentsController(ApplicationDbContext context)
+        public ExperimentsController(ApplicationDbContext context, UserManager<AppUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
@@ -50,9 +56,9 @@ namespace SeniorProject.Controllers
         // GET: Experiments/Create
         public IActionResult Create()
         {
-           /* ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID");
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount");*/
+            /* ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID");
+             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+             ViewData["projectId"] = new SelectList(_context.Set<Project>(), "ID", "fundAmount");*/
             return View();
         }
 
@@ -61,14 +67,36 @@ namespace SeniorProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,projectId,Title,Superv,Date,Desc,LabDayId,UserId")] Experiment experiment)
+        public async Task<IActionResult> Create([Bind("ID,Title,Superv,Date,Desc")] Experiment experiment)
         {
             if (ModelState.IsValid)
             {
-               /* _context.Add(experiment);
-                await _context.SaveChangesAsync();*/
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                experiment.User = user;
+                experiment.UserId = user.Id;
+                //var currentUMUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                //var user = await _userManager.GetUserAsync(HttpContext.User);
+                LabDay labDay = _context.LabDay.FirstOrDefault(a => a.date.Equals(DateTime.Now.Date));
+                experiment.LabDay = labDay;
+                experiment.LabDayId = labDay.ID;
 
-                return RedirectToAction(nameof(Index));
+                //experiment.User=
+                //experiment.UserId=
+
+                /* _context.Add(experiment);
+                 await _context.SaveChangesAsync();*/
+                // experiment.Equipments = new ICollection<Equipment>;
+                IList<Equipment> equipments = _context.Equipment.Where(a => a.inUse == false).ToList();
+                //ViewBag.Equipments = equipments;
+                TempData["equipments"] = JsonConvert.SerializeObject(equipments);
+                TempData["experiment"] = JsonConvert.SerializeObject(experiment);
+                TempData.Keep();
+
+                
+
+                return RedirectToAction(nameof(ReserveEquipments));
+
+                //  return RedirectToAction(nameof(Index));
             }
             /*ViewData["LabDayId"] = new SelectList(_context.Set<LabDay>(), "ID", "ID", experiment.LabDayId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", experiment.UserId);
@@ -76,10 +104,54 @@ namespace SeniorProject.Controllers
             return View(experiment);
         }
 
-       /* public IActionResult ReserveEquipments (Experiment experiment)
+
+
+
+        public IActionResult ReserveEquipments()
         {
-            return View(ReserveEquipments);
-        }*/
+            //virtual objects loose their value, null
+            //error after refresh
+            var experiment = TempData["experiment"];
+            var equipments = TempData["equipments"];
+            TempData.Keep();
+            //TempData["experiment"] = experiment;
+            //TempData.Keep();
+            ViewBag.Equipments = JsonConvert.DeserializeObject<IList<Equipment>>((string)equipments);
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Reserve(String [] equipments)
+        {
+            if (ModelState.IsValid)
+            {
+                var experiment2 = JsonConvert.DeserializeObject<Experiment>((string)TempData["experiment"]);
+                //Console.WriteLine(""+equipments[1]);
+                //Console.WriteLine("" + equipments[0]);
+                //experiment2.Equipments = equipments;
+
+                for (int i = 0; i < equipments.Length; i++)
+                {
+                    Equipment equipment = _context.Equipment.FirstOrDefault(a => a.name.Equals(equipments[i]));
+                    equipment.inUse = true;
+                    experiment2.Equipments.Add(equipment);
+                    
+
+                }
+
+                _context.Add(experiment2);
+                _context.SaveChangesAsync();
+                
+
+                return RedirectToAction(nameof(Index));
+
+           
+            }
+
+            return View();
+        }
+
 
 
         // GET: Experiments/Edit/5

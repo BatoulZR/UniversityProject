@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SeniorProject.Models.Experiment>
+@model IEnumerable<SeniorProject.Models.Experiment>
 
 @{
     ViewData["Title"] = "Index";
@@ -24,15 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Date)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Desc)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LabDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
+         
             <th></th>
         </tr>
     </thead>
@@ -51,15 +43,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Desc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LabDay.ID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
+           
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
