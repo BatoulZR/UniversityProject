@@ -1,33 +1,36 @@
 @model SeniorProject.Models.Experiment
 
 
-
-
+@{
+    ViewData["Title"] = "ReserveEquipments";
+}
 
 <h1>Reserve Equipments</h1>
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Reserve">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Equipments" class="control-label">Choose the equipments you need</label>
-                <select multiple size="10" asp-for="Equipments" class="form-control">
-                    @{ foreach (var item in ViewBag.Equipments)
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        {
-            <option value="@item.name"> @item.name </option> } }
-
-                </select>
-                <span asp-validation-for="Equipments" class="text-danger"></span>
-            </div>
+        <div class="form-group">
+            <label asp-for="Equipments" class="control-label"></label>
+            <select multiple size="5" asp-for="Equipments" class="form-control">
+                @{ foreach (var item in Model.Equipments )
+                        //if (item.name="laal")
+                    // <option> item.name </option>
 
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+                        }
+
+            </select>
+            <span asp-validation-for="Equipments" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+
     </div>
 </div>
 

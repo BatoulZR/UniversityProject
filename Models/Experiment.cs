@@ -11,7 +11,7 @@ namespace SeniorProject.Models
 {
     public class Experiment
     {
-        [Key]
+        
         public int ID{ get; set; }
 
         [ForeignKey("Project Id")]
@@ -24,14 +24,14 @@ namespace SeniorProject.Models
         public String Title { get; set; }
 
         [DisplayName("Supervisor")]
-        public string Superv { get; set; }
+        public int Superv { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         [DataType(DataType.MultilineText)]
         [DisplayName("Description")]
-        public string Desc { get; set; }
+        public int Desc { get; set; }
 
 
         public virtual ICollection<Equipment> Equipments { get; set; }

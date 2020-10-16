@@ -512,11 +512,8 @@ namespace SeniorProject.Migrations
                     b.Property<int?>("ex_id")
                         .HasColumnType("int");
 
-                    b.Property<bool>("expired")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime?>("expiryDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<TimeSpan>("from")
                         .HasColumnType("time");
@@ -535,9 +532,6 @@ namespace SeniorProject.Migrations
 
                     b.Property<int>("quantityUsed")
                         .HasColumnType("int");
-
-                    b.Property<bool>("remainingQuantity")
-                        .HasColumnType("bit");
 
                     b.Property<string>("room")
                         .HasColumnType("nvarchar(max)");
@@ -574,14 +568,14 @@ namespace SeniorProject.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Desc")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Desc")
+                        .HasColumnType("int");
 
                     b.Property<int>("LabDayId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Superv")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Superv")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");

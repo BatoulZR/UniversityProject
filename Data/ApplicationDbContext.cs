@@ -50,10 +50,6 @@ namespace SeniorProject.Data
 
             });
 
-            modelBuilder.Entity<Equipment>(u =>            {                u.Property<DateTime?>("expiryDate")                       .HasColumnType("date");
-
-            });
-
             /*modelBuilder.Entity<Bacteria>()            .HasIndex(p => new { p.x, p.y })            .IsUnique(true);*/
 
 
