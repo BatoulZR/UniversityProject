@@ -89,6 +89,7 @@ namespace SeniorProject.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     LabDay labDay = _context.LabDay.FirstOrDefault(a => a.date.Equals(DateTime.Now.Date));
+                    
                     if (labDay == null)
                     {
                         //return NotFound();

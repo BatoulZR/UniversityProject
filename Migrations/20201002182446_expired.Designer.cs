@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SeniorProject.Data;
 
 namespace SeniorProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201002182446_expired")]
+    partial class expired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -535,9 +537,6 @@ namespace SeniorProject.Migrations
 
                     b.Property<int>("quantityUsed")
                         .HasColumnType("int");
-
-                    b.Property<bool>("remainingQuantity")
-                        .HasColumnType("bit");
 
                     b.Property<string>("room")
                         .HasColumnType("nvarchar(max)");

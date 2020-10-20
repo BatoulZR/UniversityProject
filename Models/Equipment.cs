@@ -47,7 +47,11 @@ namespace SeniorProject.Models
         [DisplayName("Calibration")]
         public Boolean calibration { get; set; }
 
-        public Boolean inUse { get; set; }
+        public Boolean inUse { get; set; } = false;
+
+        public Boolean expired { get; set; } = false;
+
+        public Boolean remainingQuantity { get; set; } = false;
 
         [Required]
         [DisplayName("Quantity Used")]

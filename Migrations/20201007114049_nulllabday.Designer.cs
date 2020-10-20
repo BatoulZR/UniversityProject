@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SeniorProject.Data;
 
 namespace SeniorProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201007114049_nulllabday")]
+    partial class nulllabday
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -577,7 +579,7 @@ namespace SeniorProject.Migrations
                     b.Property<string>("Desc")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LabDayId")
+                    b.Property<int?>("LabDayId")
                         .HasColumnType("int");
 
                     b.Property<string>("Superv")
@@ -1271,9 +1273,7 @@ namespace SeniorProject.Migrations
                 {
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("Experiments")
-                        .HasForeignKey("LabDayId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LabDayId");
 
                     b.HasOne("SeniorProject.Data.AppUser", "User")
                         .WithMany("Experiments")

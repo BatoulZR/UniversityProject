@@ -15,16 +15,16 @@
 
             <th>
                 Name
-                
+
             </th>
 
             <th>
-              Quantity
-                
+                Quantity
+
             </th>
 
             <th>
-              
+
                 Expiry Date
             </th>
 
@@ -36,26 +36,86 @@
         {
             if (item.type.Equals("Consumable"))
             {
-            <tr>
+                if (item.expired == true)
+                {
+                    <tr style="background-color:#FF0000">
 
-                <td>
-                    @item.name
-                </td>
+                        <td>
+                            @item.name
+                        </td>
 
-                <td>
-                    @item.quantity
-                </td>
+                        <td>
+                            @item.quantity
+                        </td>
 
-                <td>
-                    @item.expiryDate
-                </td>
+                        <td>
+                            @item.expiryDate
+                        </td>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+
+
+
+                    </tr>
+
+
+                }
+
+                else
+                    if (item.remainingQuantity == true)
+                {
+                    <tr style="background-color:#FF0000">
+
+                        <td>
+                            @item.name
+                        </td>
+
+                        <td>
+                            @item.quantity
+                        </td>
+
+                        <td>
+                            @item.expiryDate
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+
+
+
+                    </tr>
+
+                }
+                else
+                {
+                <tr>
+
+                    <td>
+                        @item.name
+                    </td>
+
+                    <td>
+                        @item.quantity
+                    </td>
+
+                    <td>
+                        @item.expiryDate
+                    </td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+                }
             }
         }
     </tbody>
