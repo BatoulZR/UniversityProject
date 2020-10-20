@@ -130,6 +130,7 @@ namespace SeniorProject.Controllers
                 //Console.WriteLine(""+equipments[1]);
                 //Console.WriteLine("" + equipments[0]);
                 //experiment2.Equipments = equipments;
+                //lkoo
 
                 for (int i = 0; i < equipments.Length; i++)
                 {
