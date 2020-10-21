@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\source\\repos\\SeniorProjectMicrobiology\\SeniorProject.csproj": {}
+    "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\source\\repos\\SeniorProjectMicrobiology\\SeniorProject.csproj": {
+    "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\source\\repos\\SeniorProjectMicrobiology\\SeniorProject.csproj",
+        "projectUniqueName": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj",
         "projectName": "SeniorProject",
-        "projectPath": "C:\\Users\\USER\\source\\repos\\SeniorProjectMicrobiology\\SeniorProject.csproj",
-        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\source\\repos\\SeniorProjectMicrobiology\\obj\\",
+        "projectPath": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj",
+        "packagesPath": "C:\\Users\\nour\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nour\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
