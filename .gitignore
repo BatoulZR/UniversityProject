@@ -3,3 +3,8 @@ obj/Debug/netcoreapp3.1
 *.dll
 *.pdb
 *.v2
+*.json
+*.cache
+*.props
+*.assets.json
+*.csproj.nuget.dgspec.json
