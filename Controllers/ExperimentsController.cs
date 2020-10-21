@@ -72,12 +72,12 @@ namespace SeniorProject.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.GetUserAsync(HttpContext.User);
-                experiment.User = user;
+                //experiment.User = user;
                 experiment.UserId = user.Id;
                 //var currentUMUser = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 //var user = await _userManager.GetUserAsync(HttpContext.User);
                 LabDay labDay = _context.LabDay.FirstOrDefault(a => a.date.Equals(DateTime.Now.Date));
-                experiment.LabDay = labDay;
+                //experiment.LabDay = labDay;
                 experiment.LabDayId = labDay.ID;
 
                 //experiment.User=
@@ -132,17 +132,19 @@ namespace SeniorProject.Controllers
                 //experiment2.Equipments = equipments;
                 //lkoo
 
+                experiment2.Equipments = new List<Equipment>();
+
                 for (int i = 0; i < equipments.Length; i++)
                 {
                     Equipment equipment = _context.Equipment.FirstOrDefault(a => a.name.Equals(equipments[i]));
-                   equipment.inUse = true;
+                    equipment.inUse = true;
                     experiment2.Equipments.Add(equipment);
-                    
+               
 
                 }
 
-                _context.Add(experiment2);
-                _context.SaveChangesAsync();
+                _context.Experiment.Add(experiment2);
+                _context.SaveChanges();
                 
 
                 return RedirectToAction(nameof(Index));

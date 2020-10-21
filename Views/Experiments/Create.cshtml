@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <input id="myDate" asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,3 +48,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    var today = new Date();    var dd = String(today.getDate()).padStart(2, '0');    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!    var yyyy = today.getFullYear();    today = yyyy + '-' + mm + '-' + dd;
+
+    document.getElementById("myDate").min = today;
+
+</script>

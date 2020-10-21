@@ -15,7 +15,7 @@ namespace SeniorProject.Models
         public int ID{ get; set; }
 
         [ForeignKey("Project Id")]
-        public int projectId { get; set; }
+        public int? projectId { get; set; }
 
         public virtual Project project { get; set; }
 
