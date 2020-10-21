@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SeniorProject.Migrations
 {
-    public partial class first : Migration
+    public partial class m1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -83,27 +83,6 @@ namespace SeniorProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipment",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    type = table.Column<string>(nullable: true),
-                    name = table.Column<string>(nullable: true),
-                    weight = table.Column<int>(nullable: true),
-                    units = table.Column<string>(nullable: true),
-                    quantity = table.Column<int>(nullable: true),
-                    arrivalDate = table.Column<DateTime>(nullable: false),
-                    expiryDate = table.Column<DateTime>(nullable: true),
-                    notes = table.Column<string>(nullable: true),
-                    room = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Equipment", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Freezer",
                 columns: table => new
                 {
@@ -136,25 +115,6 @@ namespace SeniorProject.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_LabDay", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Machine",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    name = table.Column<string>(nullable: true),
-                    serialNumber = table.Column<string>(nullable: true),
-                    arrivalDate = table.Column<DateTime>(nullable: false),
-                    expiryDate = table.Column<DateTime>(nullable: false),
-                    notes = table.Column<string>(nullable: true),
-                    room = table.Column<string>(nullable: true),
-                    calibration = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Machine", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -617,41 +577,6 @@ namespace SeniorProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TestingAndCalibration",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    machineId = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    date = table.Column<DateTime>(nullable: false),
-                    nextCheck = table.Column<DateTime>(nullable: false),
-                    LabDayId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TestingAndCalibration", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_TestingAndCalibration_LabDay_LabDayId",
-                        column: x => x.LabDayId,
-                        principalTable: "LabDay",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_TestingAndCalibration_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_TestingAndCalibration_Machine_machineId",
-                        column: x => x.machineId,
-                        principalTable: "Machine",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MeetingPresence",
                 columns: table => new
                 {
@@ -844,39 +769,73 @@ namespace SeniorProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UsedEquipment",
+                name: "Equipment",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    quantity = table.Column<int>(nullable: false),
-                    from = table.Column<DateTime>(nullable: false),
-                    to = table.Column<DateTime>(nullable: false),
+                    type = table.Column<string>(nullable: true),
+                    name = table.Column<string>(nullable: true),
+                    Capacity = table.Column<string>(nullable: true),
+                    serialNumber = table.Column<string>(nullable: true),
+                    weight = table.Column<int>(nullable: true),
+                    units = table.Column<string>(nullable: true),
+                    quantity = table.Column<int>(nullable: true),
+                    arrivalDate = table.Column<DateTime>(nullable: false),
+                    expiryDate = table.Column<DateTime>(nullable: true),
+                    notes = table.Column<string>(nullable: true),
+                    room = table.Column<string>(nullable: true),
+                    calibration = table.Column<bool>(nullable: false),
+                    inUse = table.Column<bool>(nullable: false),
+                    quantityUsed = table.Column<int>(nullable: false),
+                    from = table.Column<TimeSpan>(nullable: false),
+                    to = table.Column<TimeSpan>(nullable: false),
                     exId = table.Column<int>(nullable: false),
-                    ex_id = table.Column<int>(nullable: true),
-                    machineID = table.Column<int>(nullable: false),
-                    equipmentID = table.Column<int>(nullable: false)
+                    ex_id = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UsedEquipment", x => x.ID);
+                    table.PrimaryKey("PK_Equipment", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_UsedEquipment_Equipment_equipmentID",
-                        column: x => x.equipmentID,
-                        principalTable: "Equipment",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_UsedEquipment_Experiment_ex_id",
+                        name: "FK_Equipment_Experiment_ex_id",
                         column: x => x.ex_id,
                         principalTable: "Experiment",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TestingAndCalibration",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EquipmentId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false),
+                    date = table.Column<DateTime>(nullable: false),
+                    nextCheck = table.Column<DateTime>(nullable: false),
+                    LabDayId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TestingAndCalibration", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_UsedEquipment_Machine_machineID",
-                        column: x => x.machineID,
-                        principalTable: "Machine",
+                        name: "FK_TestingAndCalibration_Equipment_EquipmentId",
+                        column: x => x.EquipmentId,
+                        principalTable: "Equipment",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TestingAndCalibration_LabDay_LabDayId",
+                        column: x => x.LabDayId,
+                        principalTable: "LabDay",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_TestingAndCalibration_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -978,6 +937,11 @@ namespace SeniorProject.Migrations
                 name: "IX_Collaboration_LabDayId",
                 table: "Collaboration",
                 column: "LabDayId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Equipment_ex_id",
+                table: "Equipment",
+                column: "ex_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Experiment_LabDayId",
@@ -1095,6 +1059,11 @@ namespace SeniorProject.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_TestingAndCalibration_EquipmentId",
+                table: "TestingAndCalibration",
+                column: "EquipmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TestingAndCalibration_LabDayId",
                 table: "TestingAndCalibration",
                 column: "LabDayId");
@@ -1103,26 +1072,6 @@ namespace SeniorProject.Migrations
                 name: "IX_TestingAndCalibration_UserId",
                 table: "TestingAndCalibration",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TestingAndCalibration_machineId",
-                table: "TestingAndCalibration",
-                column: "machineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsedEquipment_equipmentID",
-                table: "UsedEquipment",
-                column: "equipmentID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsedEquipment_ex_id",
-                table: "UsedEquipment",
-                column: "ex_id");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsedEquipment_machineID",
-                table: "UsedEquipment",
-                column: "machineID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -1185,9 +1134,6 @@ namespace SeniorProject.Migrations
                 name: "TestingAndCalibration");
 
             migrationBuilder.DropTable(
-                name: "UsedEquipment");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -1210,9 +1156,6 @@ namespace SeniorProject.Migrations
 
             migrationBuilder.DropTable(
                 name: "Experiment");
-
-            migrationBuilder.DropTable(
-                name: "Machine");
 
             migrationBuilder.DropTable(
                 name: "Project");

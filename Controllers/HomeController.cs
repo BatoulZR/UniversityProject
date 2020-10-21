@@ -38,7 +38,15 @@ namespace SeniorProject.Controllers
             return View();
         }
 
+        public IActionResult studentHome()
+        {
+            return View();
+        }
 
+        public IActionResult assistantHome()
+        {
+            return View();
+        }
 
         public IActionResult InventoriesList()
         {
