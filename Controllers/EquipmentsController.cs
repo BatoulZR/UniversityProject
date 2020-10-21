@@ -49,6 +49,30 @@ namespace SeniorProject.Controllers
             return View();
         }
 
+        // GET: Equipments/Create
+        public IActionResult CreateMachine()
+        {
+            return View();
+        }
+
+        // GET: Equipments/Create
+        public IActionResult CreateItem()
+        {
+            return View();
+        }
+
+        // GET: Equipments/Create
+        public IActionResult CreateFurniture()
+        {
+            return View();
+        }
+
+
+        // GET: Equipments/Create
+        public IActionResult CreateConsumable()
+        {
+            return View();
+        }
         // POST: Equipments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -164,6 +188,14 @@ namespace SeniorProject.Controllers
             return View(list);
         }
 
+        public IActionResult machines()
+        {
+            var list = _context.Equipment.ToList<Equipment>();
+
+            return View(list);
+        }
+
+
         public IActionResult furnitures()
         {
             var list = _context.Equipment.ToList<Equipment>();
@@ -173,39 +205,56 @@ namespace SeniorProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConsumable([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateConsumable([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
+                equipment.type = "Consumable";
                 _context.Add(equipment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(consumables));
             }
             return View(equipment);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateItem([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateItem([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
+                equipment.type = "Item";
                 _context.Add(equipment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(items));
             }
             return View(equipment);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFurniture([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateFurniture([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
+                equipment.type = "Furniture";
                 _context.Add(equipment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(furnitures));
+            }
+            return View(equipment);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateMachine([Bind("ID,name,serialNumber,calibration,quantity,arrivalDate,notes,room")] Equipment equipment)
+        {
+            if (ModelState.IsValid)
+            {
+                equipment.type = "Machine";
+                _context.Add(equipment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(machines));
             }
             return View(equipment);
         }

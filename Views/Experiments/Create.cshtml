@@ -1,21 +1,18 @@
-﻿@model SeniorProject.Models.Experiment
+@model SeniorProject.Models.Experiment
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Experiment</h1>
 
-<h4>Experiment</h4>
+<h4>New</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="projectId" class="control-label"></label>
-                <select asp-for="projectId" class ="form-control" asp-items="ViewBag.projectId"></select>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -28,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <input id="myDate" asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -36,14 +33,7 @@
                 <textarea asp-for="Desc" class="form-control"></textarea>
                 <span asp-validation-for="Desc" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LabDayId" class="control-label"></label>
-                <select asp-for="LabDayId" class ="form-control" asp-items="ViewBag.LabDayId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
+          
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -58,3 +48,10 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    var today = new Date();    var dd = String(today.getDate()).padStart(2, '0');    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!    var yyyy = today.getFullYear();    today = yyyy + '-' + mm + '-' + dd;
+
+    document.getElementById("myDate").min = today;
+
+</script>

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,7 +22,7 @@ namespace SeniorProject.Controllers
         // GET: TestingAndCalibrations
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.TestingAndCalibration.Include(t => t.LabDay).Include(t => t.User).Include(t => t.machine);
+            var applicationDbContext = _context.TestingAndCalibration.Include(t => t.LabDay).Include(t => t.User).Include(t => t.equipment);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -37,7 +37,7 @@ namespace SeniorProject.Controllers
             var testingAndCalibration = await _context.TestingAndCalibration
                 .Include(t => t.LabDay)
                 .Include(t => t.User)
-                .Include(t => t.machine)
+                .Include(t => t.equipment)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (testingAndCalibration == null)
             {
@@ -52,7 +52,7 @@ namespace SeniorProject.Controllers
         {
             ViewData["LabDayId"] = new SelectList(_context.LabDay, "ID", "ID");
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewData["machineId"] = new SelectList(_context.Machine, "ID", "ID");
+            ViewData["EquipmentId"] = new SelectList(_context.Equipment, "ID", "ID");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace SeniorProject.Controllers
             }
             ViewData["LabDayId"] = new SelectList(_context.LabDay, "ID", "ID", testingAndCalibration.LabDayId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", testingAndCalibration.UserId);
-            ViewData["machineId"] = new SelectList(_context.Machine, "ID", "ID", testingAndCalibration.machineId);
+            ViewData["machineId"] = new SelectList(_context.Equipment, "ID", "ID", testingAndCalibration.ID);
             return View(testingAndCalibration);
         }
 
@@ -90,7 +90,7 @@ namespace SeniorProject.Controllers
             }
             ViewData["LabDayId"] = new SelectList(_context.LabDay, "ID", "ID", testingAndCalibration.LabDayId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", testingAndCalibration.UserId);
-            ViewData["machineId"] = new SelectList(_context.Machine, "ID", "ID", testingAndCalibration.machineId);
+            ViewData["machineId"] = new SelectList(_context.Equipment, "ID", "ID", testingAndCalibration.EquipmentId);
             return View(testingAndCalibration);
         }
 
@@ -128,7 +128,7 @@ namespace SeniorProject.Controllers
             }
             ViewData["LabDayId"] = new SelectList(_context.LabDay, "ID", "ID", testingAndCalibration.LabDayId);
             ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", testingAndCalibration.UserId);
-            ViewData["machineId"] = new SelectList(_context.Machine, "ID", "ID", testingAndCalibration.machineId);
+            ViewData["machineId"] = new SelectList(_context.Equipment, "ID", "ID", testingAndCalibration.EquipmentId);
             return View(testingAndCalibration);
         }
 
@@ -143,7 +143,7 @@ namespace SeniorProject.Controllers
             var testingAndCalibration = await _context.TestingAndCalibration
                 .Include(t => t.LabDay)
                 .Include(t => t.User)
-                .Include(t => t.machine)
+                .Include(t => t.equipment)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (testingAndCalibration == null)
             {

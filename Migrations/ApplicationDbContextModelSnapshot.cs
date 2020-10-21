@@ -497,11 +497,32 @@ namespace SeniorProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Capacity")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("arrivalDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("calibration")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("exId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ex_id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("expired")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime?>("expiryDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
+
+                    b.Property<TimeSpan>("from")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("inUse")
+                        .HasColumnType("bit");
 
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
@@ -512,8 +533,20 @@ namespace SeniorProject.Migrations
                     b.Property<int?>("quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("quantityUsed")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("remainingQuantity")
+                        .HasColumnType("bit");
+
                     b.Property<string>("room")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("serialNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("to")
+                        .HasColumnType("time");
 
                     b.Property<string>("type")
                         .HasColumnType("nvarchar(max)");
@@ -525,6 +558,8 @@ namespace SeniorProject.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("ex_id");
 
                     b.ToTable("Equipment");
                 });
@@ -539,14 +574,14 @@ namespace SeniorProject.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Desc")
-                        .HasColumnType("int");
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LabDayId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Superv")
-                        .HasColumnType("int");
+                    b.Property<string>("Superv")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -554,7 +589,7 @@ namespace SeniorProject.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("projectId")
+                    b.Property<int?>("projectId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -687,39 +722,6 @@ namespace SeniorProject.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("LabDay");
-                });
-
-            modelBuilder.Entity("SeniorProject.Models.Machine", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("arrivalDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("calibration")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("expiryDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("room")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("serialNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Machine");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.MeetingPresence", b =>
@@ -1093,6 +1095,9 @@ namespace SeniorProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("EquipmentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("LabDayId")
                         .HasColumnType("int");
 
@@ -1102,60 +1107,18 @@ namespace SeniorProject.Migrations
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("machineId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("nextCheck")
                         .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("EquipmentId");
+
                     b.HasIndex("LabDayId");
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("machineId");
-
                     b.ToTable("TestingAndCalibration");
-                });
-
-            modelBuilder.Entity("SeniorProject.Models.UsedEquipment", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("equipmentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("exId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ex_id")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("from")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("machineID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("quantity")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("to")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("equipmentID");
-
-                    b.HasIndex("ex_id");
-
-                    b.HasIndex("machineID");
-
-                    b.ToTable("UsedEquipment");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -1297,6 +1260,13 @@ namespace SeniorProject.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SeniorProject.Models.Equipment", b =>
+                {
+                    b.HasOne("SeniorProject.Models.Experiment", "Experiment")
+                        .WithMany("Equipments")
+                        .HasForeignKey("ex_id");
+                });
+
             modelBuilder.Entity("SeniorProject.Models.Experiment", b =>
                 {
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
@@ -1313,9 +1283,7 @@ namespace SeniorProject.Migrations
 
                     b.HasOne("SeniorProject.Models.Project", "project")
                         .WithMany("Experiments")
-                        .HasForeignKey("projectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("projectId");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.Form", b =>
@@ -1457,6 +1425,12 @@ namespace SeniorProject.Migrations
 
             modelBuilder.Entity("SeniorProject.Models.TestingAndCalibration", b =>
                 {
+                    b.HasOne("SeniorProject.Models.Equipment", "equipment")
+                        .WithMany()
+                        .HasForeignKey("EquipmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("TestingAndCalibrations")
                         .HasForeignKey("LabDayId")
@@ -1466,31 +1440,6 @@ namespace SeniorProject.Migrations
                     b.HasOne("SeniorProject.Data.AppUser", "User")
                         .WithMany("TestingAndCalibrations")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SeniorProject.Models.Machine", "machine")
-                        .WithMany()
-                        .HasForeignKey("machineId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SeniorProject.Models.UsedEquipment", b =>
-                {
-                    b.HasOne("SeniorProject.Models.Equipment", "equipment")
-                        .WithMany("UsedEquipments")
-                        .HasForeignKey("equipmentID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("SeniorProject.Models.Experiment", "Experiment")
-                        .WithMany("UsedEquipments")
-                        .HasForeignKey("ex_id");
-
-                    b.HasOne("SeniorProject.Models.Machine", "Machine")
-                        .WithMany("UsedEquipments")
-                        .HasForeignKey("machineID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });

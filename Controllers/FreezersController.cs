@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,6 +21,11 @@ namespace SeniorProject.Controllers
 
         // GET: Freezers
         public async Task<IActionResult> Index()
+        {
+            return View(await _context.Freezer.ToListAsync());
+        }
+
+        public async Task<IActionResult> Index80()
         {
             return View(await _context.Freezer.ToListAsync());
         }

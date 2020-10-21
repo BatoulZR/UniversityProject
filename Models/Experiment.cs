@@ -11,11 +11,11 @@ namespace SeniorProject.Models
 {
     public class Experiment
     {
-        
+        [Key]
         public int ID{ get; set; }
 
         [ForeignKey("Project Id")]
-        public int projectId { get; set; }
+        public int? projectId { get; set; }
 
         public virtual Project project { get; set; }
 
@@ -24,17 +24,19 @@ namespace SeniorProject.Models
         public String Title { get; set; }
 
         [DisplayName("Supervisor")]
-        public int Superv { get; set; }
+        public string Superv { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
         [DataType(DataType.MultilineText)]
         [DisplayName("Description")]
-        public int Desc { get; set; }
+        public string Desc { get; set; }
 
 
-        public virtual ICollection<UsedEquipment> UsedEquipments { get; set; }
+        public virtual ICollection<Equipment> Equipments { get; set; }
+
+        
 
         public virtual ICollection<Biowaste> Biowastes { get; set; }
 

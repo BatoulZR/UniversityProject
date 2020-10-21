@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SeniorProject.Services;
+using Microsoft.Extensions.Options;
 
 namespace SeniorProject
 {
@@ -26,17 +27,42 @@ namespace SeniorProject
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<AppUser>(options => {
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<AppUser>(options =>
+            {
                 options.SignIn.RequireConfirmedAccount = true;
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<ApplicationDbContext>();
             //services.AddDefaultIdentity<IdentityUser<int>>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Assistant", policy => 
+                                 policy.RequireClaim("Role","Assistant"));
+
+                options.AddPolicy("Trainee", policy =>
+                                 policy.RequireClaim("Role", "Trainee"));
+
+                options.AddPolicy("M2Student", policy =>
+                                 policy.RequireClaim("Role", "M2Student"));
+
+                options.AddPolicy("PhdStudent", policy =>
+                                 policy.RequireClaim("Role", "PhdStudent"));
+
+                options.AddPolicy("Admin", policy =>
+                                 policy.RequireClaim("Role", "Admin"));
+
+                options.AddPolicy("Supervisor", policy =>
+                                 policy.RequireClaim("Role", "Supervisor"));
+
+
+            });
             services.AddRazorPages();
-            services.AddHostedService<LabDayClosingHostedService>();
+            
+            //services.AddHostedService<LabDayClosingHostedService>();
+            //services.AddHostedService<EquipmentHostedService>();
             services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
         }
 

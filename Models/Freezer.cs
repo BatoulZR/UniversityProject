@@ -12,16 +12,12 @@ namespace SeniorProject.Models
         
         public int ID { get; set; }
 
-
-
         //A B C
         public string name { get; set; }
 
         //freezer -20 or -80
         [DisplayName("Temperature")]
         public String temperature { get; set; }
-
-      
 
         [DisplayName("Name Of Consumable")]
         public String Cons { get; set; }
