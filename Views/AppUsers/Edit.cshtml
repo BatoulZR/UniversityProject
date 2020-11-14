@@ -88,17 +88,19 @@
                 <input asp-for="AccessFailedCount" class="form-control" />
                 <span asp-validation-for="AccessFailedCount" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                @*<select asp-for="role" name="dropdown">
-                <option value=" Admin ">Admin</option>
+        <div class="form-group">
+            <label asp-for="role" class="control-label"></label>
+            <select asp-for="role" class="form-control">
+                <option value=" Admin ">admin</option>
                 <option value=" Trainee">Trainee</option>
-                <option value=" M2 Student ">M2 Student</option>
-                <option value=" PHD Student">PHD Student</option>
+                <option value=" M2 Student ">M2Student</option>
+                <option value=" PHD Student">PHDstudent</option>
                 <option value=" PHD">PHD</option>
                 <option value=" Assistant">Assistant</option>
-            </select>*@
-                <input asp-for="role" class="form-control" />
-            </div>
+            </select>
+            <span asp-validation-for="role" class="text-danger"></span>
+            @*<input asp-for="role" class="form-control" />*@
+        </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
