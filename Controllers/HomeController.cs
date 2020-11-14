@@ -38,7 +38,7 @@ namespace SeniorProject.Controllers
             return View();
         }
 
-        public IActionResult studentHome()
+        public IActionResult PHDstudentHome()
         {
             return View();
         }
@@ -48,6 +48,15 @@ namespace SeniorProject.Controllers
             return View();
         }
 
+        public IActionResult PHDHome()
+        {
+            return View();
+        }
+
+        public IActionResult M2Home()
+        {
+            return View();
+        }
         public IActionResult InventoriesList()
         {
             return View();
