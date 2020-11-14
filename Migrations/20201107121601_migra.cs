@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SeniorProject.Migrations
 {
-    public partial class m1 : Migration
+    public partial class migra : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -472,6 +472,11 @@ namespace SeniorProject.Migrations
                     type = table.Column<string>(nullable: true),
                     name = table.Column<string>(nullable: true),
                     phoneNumber = table.Column<string>(nullable: true),
+                    email = table.Column<string>(nullable: true),
+                    supervised = table.Column<string>(nullable: true),
+                    project = table.Column<string>(nullable: true),
+                    university = table.Column<string>(nullable: true),
+                    position = table.Column<string>(nullable: true),
                     PagesNumber = table.Column<int>(nullable: false),
                     Colored = table.Column<bool>(nullable: false),
                     BorrowedObject = table.Column<string>(nullable: true),
@@ -479,8 +484,8 @@ namespace SeniorProject.Migrations
                     ReturnDate = table.Column<DateTime>(nullable: false),
                     Returned = table.Column<bool>(nullable: false),
                     Work = table.Column<string>(nullable: true),
-                    Schedule = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
+                    confirmation = table.Column<bool>(nullable: false),
                     LabDayId = table.Column<int>(nullable: false),
                     AppUserId = table.Column<int>(nullable: true)
                 },
@@ -609,11 +614,11 @@ namespace SeniorProject.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    projectId = table.Column<int>(nullable: false),
+                    projectId = table.Column<int>(nullable: true),
                     Title = table.Column<string>(nullable: true),
-                    Superv = table.Column<int>(nullable: false),
+                    Superv = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    Desc = table.Column<int>(nullable: false),
+                    Desc = table.Column<string>(nullable: true),
                     LabDayId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false)
                 },
@@ -769,7 +774,7 @@ namespace SeniorProject.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Equipment",
+                name: "Item",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -782,11 +787,13 @@ namespace SeniorProject.Migrations
                     units = table.Column<string>(nullable: true),
                     quantity = table.Column<int>(nullable: true),
                     arrivalDate = table.Column<DateTime>(nullable: false),
-                    expiryDate = table.Column<DateTime>(nullable: true),
+                    expiryDate = table.Column<DateTime>(type: "date", nullable: true),
                     notes = table.Column<string>(nullable: true),
                     room = table.Column<string>(nullable: true),
                     calibration = table.Column<bool>(nullable: false),
                     inUse = table.Column<bool>(nullable: false),
+                    expired = table.Column<bool>(nullable: false),
+                    remainingQuantity = table.Column<bool>(nullable: false),
                     quantityUsed = table.Column<int>(nullable: false),
                     from = table.Column<TimeSpan>(nullable: false),
                     to = table.Column<TimeSpan>(nullable: false),
@@ -795,9 +802,9 @@ namespace SeniorProject.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Equipment", x => x.ID);
+                    table.PrimaryKey("PK_Item", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Equipment_Experiment_ex_id",
+                        name: "FK_Item_Experiment_ex_id",
                         column: x => x.ex_id,
                         principalTable: "Experiment",
                         principalColumn: "ID",
@@ -810,7 +817,7 @@ namespace SeniorProject.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EquipmentId = table.Column<int>(nullable: false),
+                    ItemId = table.Column<int>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     date = table.Column<DateTime>(nullable: false),
                     nextCheck = table.Column<DateTime>(nullable: false),
@@ -820,9 +827,9 @@ namespace SeniorProject.Migrations
                 {
                     table.PrimaryKey("PK_TestingAndCalibration", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_TestingAndCalibration_Equipment_EquipmentId",
-                        column: x => x.EquipmentId,
-                        principalTable: "Equipment",
+                        name: "FK_TestingAndCalibration_Item_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Item",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -939,8 +946,8 @@ namespace SeniorProject.Migrations
                 column: "LabDayId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Equipment_ex_id",
-                table: "Equipment",
+                name: "IX_Item_ex_id",
+                table: "Item",
                 column: "ex_id");
 
             migrationBuilder.CreateIndex(
@@ -1059,9 +1066,9 @@ namespace SeniorProject.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TestingAndCalibration_EquipmentId",
+                name: "IX_TestingAndCalibration_ItemId",
                 table: "TestingAndCalibration",
-                column: "EquipmentId");
+                column: "ItemId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TestingAndCalibration_LabDayId",
@@ -1152,7 +1159,7 @@ namespace SeniorProject.Migrations
                 name: "Researcher");
 
             migrationBuilder.DropTable(
-                name: "Equipment");
+                name: "Item");
 
             migrationBuilder.DropTable(
                 name: "Experiment");

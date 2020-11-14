@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SeniorProject.Models.Permission>
+@model IEnumerable<SeniorProject.Models.Permission>
 
 @{
     ViewData["Title"] = "Index";
@@ -39,9 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Work)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Schedule)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Notes)
             </th>
@@ -81,9 +79,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Work)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Schedule)
-            </td>
+         
             <td>
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>

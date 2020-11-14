@@ -10,22 +10,22 @@ using SeniorProject.Models;
 
 namespace SeniorProject.Controllers
 {
-    public class EquipmentsController : Controller
+    public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EquipmentsController(ApplicationDbContext context)
+        public ItemsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Equipments
+        // GET: Items
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Equipment.ToListAsync());
+            return View(await _context.Item.ToListAsync());
         }
 
-        // GET: Equipments/Details/5
+        // GET: Items/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,63 +33,63 @@ namespace SeniorProject.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (equipment == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(equipment);
+            return View(item);
         }
 
-        // GET: Equipments/Create
+        // GET: Items/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // GET: Equipments/Create
+        // GET: Items/Create
         public IActionResult CreateMachine()
         {
             return View();
         }
 
-        // GET: Equipments/Create
+        // GET: Items/Create
         public IActionResult CreateItem()
         {
             return View();
         }
 
-        // GET: Equipments/Create
+        // GET: Items/Create
         public IActionResult CreateFurniture()
         {
             return View();
         }
 
 
-        // GET: Equipments/Create
+        // GET: Items/Create
         public IActionResult CreateConsumable()
         {
             return View();
         }
-        // POST: Equipments/Create
+        // POST: Items/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> Create([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(equipment);
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(equipment);
+            return View(item);
         }
 
-        // GET: Equipments/Edit/5
+        // GET: Item/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -97,22 +97,22 @@ namespace SeniorProject.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment.FindAsync(id);
-            if (equipment == null)
+            var item = await _context.Item.FindAsync(id);
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(equipment);
+            return View(item);
         }
 
-        // POST: Equipments/Edit/5
+        // POST: Items/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
         {
-            if (id != equipment.ID)
+            if (id != item.ID)
             {
                 return NotFound();
             }
@@ -121,12 +121,12 @@ namespace SeniorProject.Controllers
             {
                 try
                 {
-                    _context.Update(equipment);
+                    _context.Update(item);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EquipmentExists(equipment.ID))
+                    if (!ItemExists(item.ID))
                     {
                         return NotFound();
                     }
@@ -137,10 +137,10 @@ namespace SeniorProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(equipment);
+            return View(item);
         }
 
-        // GET: Equipments/Delete/5
+        // GET: Items/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -148,49 +148,49 @@ namespace SeniorProject.Controllers
                 return NotFound();
             }
 
-            var equipment = await _context.Equipment
+            var item = await _context.Item
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (equipment == null)
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(equipment);
+            return View(item);
         }
 
-        // POST: Equipments/Delete/5
+        // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var equipment = await _context.Equipment.FindAsync(id);
-            _context.Equipment.Remove(equipment);
+            var item = await _context.Item.FindAsync(id);
+            _context.Item.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EquipmentExists(int id)
+        private bool ItemExists(int id)
         {
-            return _context.Equipment.Any(e => e.ID == id);
+            return _context.Item.Any(e => e.ID == id);
         }
 
         public IActionResult consumables ()
         {
-            var list = _context.Equipment.ToList<Equipment>();
+            var list = _context.Item.ToList<Item>();
            
             return View(list);
         }
 
-        public IActionResult items()
+        public IActionResult glassAndPlastic()
         {
-            var list = _context.Equipment.ToList<Equipment>();
+            var list = _context.Item.ToList<Item>();
 
             return View(list);
         }
 
         public IActionResult machines()
         {
-            var list = _context.Equipment.ToList<Equipment>();
+            var list = _context.Item.ToList<Item>();
 
             return View(list);
         }
@@ -198,65 +198,65 @@ namespace SeniorProject.Controllers
 
         public IActionResult furnitures()
         {
-            var list = _context.Equipment.ToList<Equipment>();
+            var list = _context.Item.ToList<Item>();
 
             return View(list);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConsumable([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateConsumable([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
         {
             if (ModelState.IsValid)
             {
-                equipment.type = "Consumable";
-                _context.Add(equipment);
+                item.type = "Consumable";
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(consumables));
             }
-            return View(equipment);
+            return View(item);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateItem([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateGlass([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
         {
             if (ModelState.IsValid)
             {
-                equipment.type = "Item";
-                _context.Add(equipment);
+                item.type = "Item";
+                _context.Add(item);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(items));
+                return RedirectToAction(nameof(glassAndPlastic));
             }
-            return View(equipment);
+            return View(item);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFurniture([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateFurniture([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
         {
             if (ModelState.IsValid)
             {
-                equipment.type = "Furniture";
-                _context.Add(equipment);
+                item.type = "Furniture";
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(furnitures));
             }
-            return View(equipment);
+            return View(item);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateMachine([Bind("ID,name,serialNumber,calibration,quantity,arrivalDate,notes,room")] Equipment equipment)
+        public async Task<IActionResult> CreateMachine([Bind("ID,name,serialNumber,calibration,quantity,arrivalDate,notes,room")] Item item)
         {
             if (ModelState.IsValid)
             {
-                equipment.type = "Machine";
-                _context.Add(equipment);
+                item.type = "Machine";
+                _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(machines));
             }
-            return View(equipment);
+            return View(item);
         }
 
     }

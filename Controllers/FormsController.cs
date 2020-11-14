@@ -106,11 +106,11 @@ namespace SeniorProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateMembership([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,requestStatus,date")] Form form)
+        public async Task<IActionResult> CreateMembership([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,requestStatus")] Form form)
         {
             if (ModelState.IsValid)
             {
-
+                form.date = DateTime.Now;
                 form.requestType = "Membership";
                 form.requestStatus = false;
                 
@@ -125,10 +125,11 @@ namespace SeniorProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateInternship([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,date,place,duration")] Form form)
+        public async Task<IActionResult> CreateInternship([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,place,duration")] Form form)
         {
             if (ModelState.IsValid)
             {
+                form.date = DateTime.Now;
                 form.requestType = "Internship";
                 form.requestStatus = false;
                 
@@ -142,10 +143,11 @@ namespace SeniorProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTrainingPre([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,speciality,year,date,duration")] Form form)
+        public async Task<IActionResult> CreateTrainingPre([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,speciality,year,duration")] Form form)
         {
             if (ModelState.IsValid)
             {
+                form.date = DateTime.Now;
                 form.requestType = "Training Pre-Registration";
                 form.requestStatus = false;
            
@@ -160,10 +162,11 @@ namespace SeniorProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFreeForm([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,requestStatus,date,Paragraph")] Form form)
+        public async Task<IActionResult> CreateFreeForm([Bind("ID,StudentID,firstname,fathername,lastname,phone,email,requestStatus,Paragraph")] Form form)
         {
             if (ModelState.IsValid)
             {
+                form.date = DateTime.Now;
                 form.requestType = "Free Form";
                 form.requestStatus = false;
                 //LabDay labDay = _context.LabDay.FirstOrDefault(a => a.date == DateTime.Now);

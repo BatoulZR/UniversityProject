@@ -1,19 +1,19 @@
 
-@model SeniorProject.Models.Equipment
+@model SeniorProject.Models.Item
 
 @{
-    ViewData["Title"] = "CreateConsumable";
+    ViewData["Title"] = "CreateFurniture";
 }
 
-<h1>Consumable</h1>
+<h1>Furniture</h1>
 
 <h4>New</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateConsumable">
+        <form asp-action="CreateFurniture">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-          
+     
             <div class="form-group">
                 <label asp-for="name" class="control-label"></label>
                 <input asp-for="name" class="form-control" />

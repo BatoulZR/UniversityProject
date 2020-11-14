@@ -490,7 +490,7 @@ namespace SeniorProject.Migrations
                     b.ToTable("Company");
                 });
 
-            modelBuilder.Entity("SeniorProject.Models.Equipment", b =>
+            modelBuilder.Entity("SeniorProject.Models.Item", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -561,7 +561,7 @@ namespace SeniorProject.Migrations
 
                     b.HasIndex("ex_id");
 
-                    b.ToTable("Equipment");
+                    b.ToTable("Item");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.Experiment", b =>
@@ -876,10 +876,13 @@ namespace SeniorProject.Migrations
                     b.Property<bool>("Returned")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Schedule")
+                    b.Property<string>("Work")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Work")
+                    b.Property<bool>("confirmation")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("email")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
@@ -888,7 +891,19 @@ namespace SeniorProject.Migrations
                     b.Property<string>("phoneNumber")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("position")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("project")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("supervised")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("university")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -1095,7 +1110,7 @@ namespace SeniorProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EquipmentId")
+                    b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<int>("LabDayId")
@@ -1112,7 +1127,7 @@ namespace SeniorProject.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("EquipmentId");
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("LabDayId");
 
@@ -1260,10 +1275,10 @@ namespace SeniorProject.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SeniorProject.Models.Equipment", b =>
+            modelBuilder.Entity("SeniorProject.Models.Item", b =>
                 {
                     b.HasOne("SeniorProject.Models.Experiment", "Experiment")
-                        .WithMany("Equipments")
+                        .WithMany("Items")
                         .HasForeignKey("ex_id");
                 });
 
@@ -1425,9 +1440,9 @@ namespace SeniorProject.Migrations
 
             modelBuilder.Entity("SeniorProject.Models.TestingAndCalibration", b =>
                 {
-                    b.HasOne("SeniorProject.Models.Equipment", "equipment")
+                    b.HasOne("SeniorProject.Models.Item", "item")
                         .WithMany()
-                        .HasForeignKey("EquipmentId")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

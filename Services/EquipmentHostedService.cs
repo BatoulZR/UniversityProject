@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SeniorProject.Services
 {
-    public class EquipmentHostedService : BackgroundService
+    public class ItemHostedService : BackgroundService
     {
 
         private CrontabSchedule _schedule;
@@ -21,7 +21,7 @@ namespace SeniorProject.Services
        // private string Schedule => "*/20 * * * * *"; //Runs every 10 seconds
         private string Schedule => "* * */3 * * *";// Runs every day at 3:00
 
-        public EquipmentHostedService(IServiceProvider serviceProvider)
+        public ItemHostedService(IServiceProvider serviceProvider)
         {
             _schedule = CrontabSchedule.Parse(Schedule, new CrontabSchedule.ParseOptions { IncludingSeconds = true });
             _nextRun = _schedule.GetNextOccurrence(DateTime.Now);
@@ -55,12 +55,12 @@ namespace SeniorProject.Services
 
                 var today = DateTime.Now.Date;
 
-                //list of expired equipments
-                var equipments = _context.Equipment
+                //list of expired items
+                var items = _context.Item
                     .Where(a => DateTime.Compare((DateTime)a.expiryDate, today.AddMonths(1)) <= 0)
                     .ToList();
 
-                foreach (var item in equipments)
+                foreach (var item in items)
                 {
                     item.expired = true;
                     _context.Entry(item).State = EntityState.Modified;
@@ -82,12 +82,12 @@ namespace SeniorProject.Services
 
                     var today = DateTime.Now.Date;
 
-                //list of expired equipments
-                var equipments = _context.Equipment
+                //list of expired items
+                var items = _context.Item
                     .Where(a => a.quantity <= a.quantity * 0.2)
                         .ToList();
 
-                    foreach (var item in equipments)
+                    foreach (var item in items)
                     {
                         item.remainingQuantity = true;
                         _context.Entry(item).State = EntityState.Modified;

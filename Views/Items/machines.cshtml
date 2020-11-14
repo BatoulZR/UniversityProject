@@ -1,15 +1,13 @@
-
-
-@model List<SeniorProject.Models.Equipment>
+@model List<SeniorProject.Models.Item>
 
     @{
         ViewData["Title"] = "consumables";
     }
 
-    <h1>Furnitures</h1>
+    <h1>Machines</h1>
 
     <p>
-        <a asp-action="CreateFurniture">Create New</a>
+        <a asp-action="CreateMachine">Create New</a>
     </p>
     <table class="table">
         <thead>
@@ -36,7 +34,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                if (item.type.Equals("Furniture"))
+                if (item.type.Equals("Machine"))
                 {
                     <tr>
 

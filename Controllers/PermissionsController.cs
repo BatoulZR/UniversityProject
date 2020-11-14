@@ -104,10 +104,11 @@ namespace SeniorProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> borrow([Bind("ID,name,phoneNumber,BorrowedObject,Date,ReturnDate,Notes")] Permission permission)
+        public async Task<IActionResult> borrow([Bind("ID,name,phoneNumber,email,suervised,project,university,position,BorrowedObject,,ReturnDate,Notes")] Permission permission)
         {
             if (ModelState.IsValid)
             {
+                permission.Date = DateTime.Now;
                 permission.type = "borrowing";
                 _context.Add(permission);
                 await _context.SaveChangesAsync();

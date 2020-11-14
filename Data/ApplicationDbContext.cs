@@ -50,7 +50,7 @@ namespace SeniorProject.Data
 
             });
 
-            modelBuilder.Entity<Equipment>(u =>            {                u.Property<DateTime?>("expiryDate")                       .HasColumnType("date");
+            modelBuilder.Entity<Item>(u =>            {                u.Property<DateTime?>("expiryDate")                       .HasColumnType("date");
 
             });
 
@@ -104,7 +104,7 @@ namespace SeniorProject.Data
         
         
 
-        public DbSet<SeniorProject.Models.Equipment> Equipment { get; set; }
+        public DbSet<SeniorProject.Models.Item> Item { get; set; }
 
         
         

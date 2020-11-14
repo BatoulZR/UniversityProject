@@ -1,24 +1,46 @@
-
-@model SeniorProject.Models.Equipment
+@model SeniorProject.Models.Item
 
 @{
-    ViewData["Title"] = "CreateFurniture";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Furniture</h1>
+<h1>Item</h1>
 
 <h4>New</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateFurniture">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-     
+            <div class="form-group">
+                <label asp-for="type" class="control-label"></label>
+                <select asp-for="type" class="form-control">
+                    <option>Consumables</option>
+                    <option>Glasswares & Multiuse Plasticwares</option>
+                    <option>Furniture</option>
+                    <option>Machines & Small Instruments</option>
+                </select>
+                <span asp-validation-for="type" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="name" class="control-label"></label>
                 <input asp-for="name" class="form-control" />
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="serialNumber" class="control-label"></label>
+                <input asp-for="serialNumber" class="form-control" />
+                <span asp-validation-for="serialNumber" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="calibration" class="control-label"></label>
+                <input type="checkbox" asp-for="calibration" class="form-control" />
+                <span asp-validation-for="calibration" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="weight" class="control-label"></label>
                 <input asp-for="weight" class="form-control">
