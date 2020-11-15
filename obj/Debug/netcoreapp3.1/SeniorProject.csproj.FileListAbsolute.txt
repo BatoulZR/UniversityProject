@@ -386,3 +386,5 @@ C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\staticw
 C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\SeniorProject.dll
 C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\SeniorProject.pdb
 C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\SeniorProject.genruntimeconfig.cache
+C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\HomePage1.cshtml.g.cs
+C:\Users\nour\Documents\GitHub\UniversityProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\traineeHome.cshtml.g.cs

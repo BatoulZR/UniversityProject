@@ -13,9 +13,9 @@
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="assistantHome">Home</a>
                 </li>
 
-                <li class="nav-item">
+                @*<li class="nav-item">
                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Profile</a>
-                </li>
+                </li>*@
                 <li class="nav-item">
                     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                         <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -32,9 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="M2Home">Home</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">M2Profile</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -45,15 +45,15 @@
                     </li>
                 }
                 else
-                
+
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "PHDstudent")
                 {
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PHDstudentHome">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PHDstudentHome">PHDstudentHome</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">PHDProfile</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -63,10 +63,13 @@
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                     </li>
                 }
-                else 
+                else
 
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "Trainee")
                 {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="traineeHome">TraineeHome</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">TraineeProfile</a>
                     </li>
@@ -84,12 +87,12 @@
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "PHD")
                 {
                     <li>
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PHDHome">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="PHDHome">PHD Home</a>
                     </li>
 
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">PHDProfile</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
@@ -107,9 +110,9 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="adminHome">AdminHome</a>
                     </li>
 
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">AdminProfile</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                             <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>

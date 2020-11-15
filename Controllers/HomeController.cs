@@ -38,12 +38,22 @@ namespace SeniorProject.Controllers
             return View();
         }
 
+        public IActionResult HomePage1()
+        {
+            return View();
+        }
+
         public IActionResult PHDstudentHome()
         {
             return View();
         }
 
         public IActionResult assistantHome()
+        {
+            return View();
+        }
+
+        public IActionResult traineeHome()
         {
             return View();
         }

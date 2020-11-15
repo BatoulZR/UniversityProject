@@ -1,0 +1,13 @@
+﻿
+body {
+    margin: 0px;
+    padding: 0px;
+    background: url(/images/microscopic-view-coronavirus-virus-strain-model-mers-cov-blurred-medical-background_36051-576.jpg);
+    background-size: cover;
+}
+
+.h1 {
+    color: white;
+    font-size: 100px;
+    position: center;
+}

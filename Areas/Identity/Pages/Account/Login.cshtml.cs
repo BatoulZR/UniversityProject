@@ -108,7 +108,7 @@ namespace SeniorProject.Areas.Identity.Pages.Account
                     //    case "Assistant": RedirectToAction("assistantHome", "Home");
                     //        break;
                     //}
-                    return RedirectToAction("adminHome", "Home");
+                    return RedirectToAction("HomePage1", "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {
