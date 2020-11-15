@@ -1,9 +1,0 @@
-obj/Debug/netcoreapp3.1
-*.suo
-*.dll
-*.pdb
-*.v2
-*.cache
-*.props
-*.assets.json
-*.csproj.nuget.dgspec.json
