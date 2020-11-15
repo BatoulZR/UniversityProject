@@ -44,7 +44,8 @@
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                     </li>
                 }
-
+                else
+                
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "PHDstudent")
                 {
                     <li class="nav-item">
@@ -62,6 +63,7 @@
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                     </li>
                 }
+                else 
 
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "Trainee")
                 {
@@ -78,6 +80,7 @@
                     </li>
                 }
 
+                else
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "PHD")
                 {
                     <li>
@@ -96,7 +99,7 @@
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
                     </li>
                 }
-
+                else
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "admin")
                 {
 

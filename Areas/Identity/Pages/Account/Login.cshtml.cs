@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using SeniorProject.Data;
 using SeniorProject.Models;
 using SQLitePCL;
+using System.Linq.Expressions;
 
 namespace SeniorProject.Areas.Identity.Pages.Account
 {
@@ -102,6 +103,11 @@ namespace SeniorProject.Areas.Identity.Pages.Account
                     }
                     _logger.LogInformation("User logged in.");
                     //return LocalRedirect(returnUrl);
+                    //switch(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value)
+                    //{
+                    //    case "Assistant": RedirectToAction("assistantHome", "Home");
+                    //        break;
+                    //}
                     return RedirectToAction("adminHome", "Home");
                 }
                 if (result.RequiresTwoFactor)
