@@ -77,12 +77,12 @@ namespace SeniorProject.Models
 
         [Required]
         [DisplayName("Experiment ID")]
-        public int exId { get; set; }
-        [ForeignKey("ex_id")]
+        public int ExId { get; set; }
+        [ForeignKey("ExId")]
         public virtual Experiment Experiment { get; set; }
 
         
-        public int companyId { get; set; }
+        public int CompanyId { get; set; }
         [ForeignKey("CompanyId")]
         public virtual Company company { get; set; }
 
