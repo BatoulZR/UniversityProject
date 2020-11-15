@@ -85,16 +85,16 @@ namespace SeniorProject.Controllers
 
                 /* _context.Add(experiment);
                  await _context.SaveChangesAsync();*/
-                // experiment.Equipments = new ICollection<Equipment>;
-                IList<Equipment> equipments = _context.Equipment.Where(a => a.inUse == false).ToList();
-                //ViewBag.Equipments = equipments;
-                TempData["equipments"] = JsonConvert.SerializeObject(equipments);
+                // experiment.Items = new ICollection<Item>;
+                IList<Item> items = _context.Item.Where(a => a.inUse == false).ToList();
+                //ViewBag.Items = items;
+                TempData["items"] = JsonConvert.SerializeObject(items);
                 TempData["experiment"] = JsonConvert.SerializeObject(experiment);
                 TempData.Keep();
 
                 
 
-                return RedirectToAction(nameof(ReserveEquipments));
+                return RedirectToAction(nameof(ReserveItems));
 
                 //  return RedirectToAction(nameof(Index));
             }
@@ -107,38 +107,38 @@ namespace SeniorProject.Controllers
 
 
 
-        public IActionResult ReserveEquipments()
+        public IActionResult ReserveItems()
         {
             //virtual objects loose their value, null
             //error after refresh
             var experiment = TempData["experiment"];
-            var equipments = TempData["equipments"];
+            var items = TempData["items"];
             TempData.Keep();
             //TempData["experiment"] = experiment;
             //TempData.Keep();
-            ViewBag.Equipments = JsonConvert.DeserializeObject<IList<Equipment>>((string)equipments);
+            ViewBag.Items = JsonConvert.DeserializeObject<IList<Item>>((string)items);
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult Reserve(String [] equipments)
+        public IActionResult Reserve(String [] items)
         {
             if (ModelState.IsValid)
             {
                 var experiment2 = JsonConvert.DeserializeObject<Experiment>((string)TempData["experiment"]);
-                //Console.WriteLine(""+equipments[1]);
-                //Console.WriteLine("" + equipments[0]);
-                //experiment2.Equipments = equipments;
+                //Console.WriteLine(""+items[1]);
+                //Console.WriteLine("" + items[0]);
+                //experiment2.Items = items;
                 //lkoo
 
-                experiment2.Equipments = new List<Equipment>();
+                experiment2.Items = new List<Item>();
 
-                for (int i = 0; i < equipments.Length; i++)
+                for (int i = 0; i < items.Length; i++)
                 {
-                    Equipment equipment = _context.Equipment.FirstOrDefault(a => a.name.Equals(equipments[i]));
-                    equipment.inUse = true;
-                    experiment2.Equipments.Add(equipment);
+                    Item item = _context.Item.FirstOrDefault(a => a.name.Equals(items[i]));
+                    item.inUse = true;
+                    experiment2.Items.Add(item);
                
 
                 }

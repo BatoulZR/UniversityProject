@@ -9,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace SeniorProject.Models
 {
-    public class Equipment
+    public class Item
     {
+
+        // an item belongs to an experiment, an experiment is a part of a project
+        //a photo/image attribute is needed
+
         public int ID { get; set; }
         [DisplayName("Type")]
         public string type { get; set; }
@@ -22,12 +26,15 @@ namespace SeniorProject.Models
         [DisplayName("Serial Number")]
         public string serialNumber { get; set; }
 
+        [DisplayName("LOT Number")]
+        public string lotNumber { get; set; }
+
         [DisplayName("Weight")]
         public int? weight { get; set; }
         [DisplayName("Units")]
         public string units { get; set; }
 
-        [DisplayName("Quantity")]
+        [DisplayName("Initial Quantity")]
         public int? quantity { get; set; }
         
         [DataType(DataType.Date)]
@@ -43,6 +50,8 @@ namespace SeniorProject.Models
         [DisplayName("Room")]
         public string room { get; set; }
 
+        [DisplayName("Price")]
+        public string price { get; set; }
 
         [DisplayName("Calibration")]
         public Boolean calibration { get; set; }
@@ -72,7 +81,10 @@ namespace SeniorProject.Models
         [ForeignKey("ex_id")]
         public virtual Experiment Experiment { get; set; }
 
-
+        
+        public int companyId { get; set; }
+        [ForeignKey("CompanyId")]
+        public virtual Company company { get; set; }
 
 
 

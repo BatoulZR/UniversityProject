@@ -31,7 +31,8 @@ namespace SeniorProject.Models
 
         public ICollection<Order> Orders { get; set; }
 
-      
+        public ICollection<Item> Items { get; set; }
+
         public ICollection<Biowaste> Biowastes { get; set; }
     }
 }

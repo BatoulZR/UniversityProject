@@ -12,9 +12,9 @@ namespace SeniorProject.Models
     {
         public int ID { get; set; }
 
-        [ForeignKey("equipment ID")]
-        public int EquipmentId { get; set; }
-        public virtual Equipment equipment { get; set; }
+        [ForeignKey("item ID")]
+        public int ItemId { get; set; }
+        public virtual Item item { get; set; }
 
         [ForeignKey("UserId")]
         public int UserId { get; set; }

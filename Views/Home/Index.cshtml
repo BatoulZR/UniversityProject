@@ -3,8 +3,9 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to Microbiology Lab</h1>
-    <p>Guests can only send form requests, or <a href="https://docs.microsoft.com/aspnet/core">Sign Up</a>.</p>
+    <h1 class="display-4">Welcome to Reasearch Laboratory of Microbiology</h1>
+   
+    <p>Guests can only send requests, or <a asp-area="Identity" asp-page="/Account/Register" >Sign Up</a>.</p>
 </div>
 
 
@@ -17,16 +18,20 @@
 
 
 <body>
+    
 
     <div class="main">
-        <a class="example_b"  asp-controller="Forms" asp-action="CreateMembership" >Membership Request</a>
-        <a class="example_b"  asp-controller="Forms" asp-action="CreateInternship" >Internship Request</a>
-       
+
+        <a class="example_b" asp-controller="Forms" asp-action="CreateMembership">Membership</a>
+        <a class="example_b" asp-controller="Forms" asp-action="CreateInternship">Internship</a>
+        <a class="example_b" asp-controller="Permissions" asp-action="work">Work</a>
+
 
     </div>
     <div class="main1">
-        <a class="example_b" asp-controller="Forms" asp-action="CreateTrainingPre">Training Pre-Registration Request</a>
+        <a class="example_b" asp-controller="Forms" asp-action="CreateTrainingPre">Training Pre-Registration</a>
         <a class="example_b" asp-controller="Forms" asp-action="CreateFreeForm">Free form</a>
+        <a class="example_b" asp-controller="Permissions" asp-action="borrow">Borrow</a>
 
     </div>
 

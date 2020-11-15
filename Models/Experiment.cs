@@ -34,7 +34,7 @@ namespace SeniorProject.Models
         public string Desc { get; set; }
 
 
-        public virtual ICollection<Equipment> Equipments { get; set; }
+        public virtual ICollection<Item> Items { get; set; }
 
         
 

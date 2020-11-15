@@ -62,7 +62,7 @@ namespace SeniorProject
             services.AddRazorPages();
             
             //services.AddHostedService<LabDayClosingHostedService>();
-            //services.AddHostedService<EquipmentHostedService>();
+            //services.AddHostedService<ItemHostedService>();
             services.AddIdentityCore<AppUser>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
         }
 

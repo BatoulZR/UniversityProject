@@ -23,6 +23,21 @@ namespace SeniorProject.Models
         [DisplayName("Phone Number")]
         public string phoneNumber { get; set; }
 
+        [DisplayName("Email")]
+        public string email { get; set; }
+
+        [DisplayName("Supervised by")]
+        public string supervised { get; set; }
+
+        [DisplayName("Project Title")]
+        public string project { get; set; }
+
+        [DisplayName("University")]
+        public string university { get; set; }
+
+        [DisplayName("Position")]
+        public string position { get; set; }
+
         [DisplayName("Pages Number")]
         public int PagesNumber { set; get; }
 
@@ -46,10 +61,12 @@ namespace SeniorProject.Models
 
         public string Work { get; set; }
 
-        public string Schedule { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Notes { get; set; }
+
+        [DisplayName("Confirmation")]
+        public Boolean confirmation { set; get; }
 
 
         [ForeignKey("LabDayId")]
