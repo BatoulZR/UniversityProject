@@ -10,8 +10,8 @@ using SeniorProject.Data;
 namespace SeniorProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201117191537_proj")]
-    partial class proj
+    [Migration("20201117222844_m6")]
+    partial class m6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -804,16 +804,16 @@ namespace SeniorProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("LabDayId")
+                    b.Property<int?>("LabDayId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("companyID")
+                    b.Property<int?>("companyID")
                         .HasColumnType("int");
 
-                    b.Property<bool>("confirmed")
+                    b.Property<bool?>("confirmed")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("dateOfOrder")
@@ -826,7 +826,7 @@ namespace SeniorProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("projectId")
+                    b.Property<int?>("projectId")
                         .HasColumnType("int");
 
                     b.Property<int>("quantity")
@@ -871,7 +871,7 @@ namespace SeniorProject.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LabDayId")
+                    b.Property<int?>("LabDayId")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
@@ -935,7 +935,7 @@ namespace SeniorProject.Migrations
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LabDayId")
+                    b.Property<int?>("LabDayId")
                         .HasColumnType("int");
 
                     b.Property<bool?>("collaborationOrNot")
@@ -1358,27 +1358,19 @@ namespace SeniorProject.Migrations
                 {
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("Orders")
-                        .HasForeignKey("LabDayId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LabDayId");
 
                     b.HasOne("SeniorProject.Data.AppUser", "User")
                         .WithMany("Orders")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.HasOne("SeniorProject.Models.Company", "company")
                         .WithMany("Orders")
-                        .HasForeignKey("companyID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("companyID");
 
                     b.HasOne("SeniorProject.Models.Project", "project")
                         .WithMany("Orders")
-                        .HasForeignKey("projectId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("projectId");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.Permission", b =>
@@ -1389,9 +1381,7 @@ namespace SeniorProject.Migrations
 
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("Permissions")
-                        .HasForeignKey("LabDayId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LabDayId");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.Project", b =>
@@ -1402,9 +1392,7 @@ namespace SeniorProject.Migrations
 
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("Projects")
-                        .HasForeignKey("LabDayId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("LabDayId");
                 });
 
             modelBuilder.Entity("SeniorProject.Models.ProjectCollaboration", b =>

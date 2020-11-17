@@ -2,13 +2,13 @@
 
 namespace SeniorProject.Migrations
 {
-    public partial class proj : Migration
+    public partial class m6 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<bool>(
-                name: "collaborationOrNot",
-                table: "Project",
+                name: "confirmed",
+                table: "Order",
                 nullable: true,
                 oldClrType: typeof(bool),
                 oldType: "bit");
@@ -17,8 +17,8 @@ namespace SeniorProject.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<bool>(
-                name: "collaborationOrNot",
-                table: "Project",
+                name: "confirmed",
+                table: "Order",
                 type: "bit",
                 nullable: false,
                 oldClrType: typeof(bool),

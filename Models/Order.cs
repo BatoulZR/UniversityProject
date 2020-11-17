@@ -39,27 +39,27 @@ namespace SeniorProject.Models
         [DataType(DataType.Date)]
         public DateTime dateOfUsage { get; set; }
 
-        public Boolean confirmed { get; set; }
+        public Boolean? confirmed { get; set; }
 
         [ForeignKey("LabDayId")]
-        public int LabDayId { get; set; }
+        public int? LabDayId { get; set; }
 
         public virtual LabDay LabDay { get; set; }
 
 
 
         [ForeignKey("companyID")]
-        public int companyID { get; set; }
+        public int? companyID { get; set; }
 
         public virtual Company company { get; set; }
 
         [ForeignKey("UserId")]
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         public virtual AppUser User { get; set; }
 
         [ForeignKey("project")]
-        public int projectId { get; set; }
+        public int? projectId { get; set; }
 
         public virtual Project project { get; set; }
 

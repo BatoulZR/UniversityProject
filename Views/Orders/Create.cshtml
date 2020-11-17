@@ -42,12 +42,12 @@
                 <input asp-for="dateOfUsage" class="form-control" />
                 <span asp-validation-for="dateOfUsage" class="text-danger"></span>
             </div>
-            <div class="form-group form-check">
+            @*<div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="confirmed" /> @Html.DisplayNameFor(model => model.confirmed)
                 </label>
-            </div>
-            <div class="form-group">
+            </div>*@
+            @*<div class="form-group">
                 <label asp-for="LabDayId" class="control-label"></label>
                 <select asp-for="LabDayId" class ="form-control" asp-items="ViewBag.LabDayId"></select>
             </div>
@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label asp-for="projectId" class="control-label"></label>
                 <select asp-for="projectId" class ="form-control" asp-items="ViewBag.projectId"></select>
-            </div>
+            </div>*@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

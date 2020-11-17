@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SeniorProject.Migrations
 {
-    public partial class itemm : Migration
+    public partial class m5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -486,7 +486,7 @@ namespace SeniorProject.Migrations
                     Work = table.Column<string>(nullable: true),
                     Notes = table.Column<string>(nullable: true),
                     confirmation = table.Column<bool>(nullable: false),
-                    LabDayId = table.Column<int>(nullable: false),
+                    LabDayId = table.Column<int>(nullable: true),
                     AppUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -525,8 +525,8 @@ namespace SeniorProject.Migrations
                     consumables = table.Column<bool>(nullable: false),
                     machinesAndEquipements = table.Column<bool>(nullable: false),
                     others = table.Column<string>(nullable: false),
-                    collaborationOrNot = table.Column<bool>(nullable: false),
-                    LabDayId = table.Column<int>(nullable: false),
+                    collaborationOrNot = table.Column<bool>(nullable: true),
+                    LabDayId = table.Column<int>(nullable: true),
                     AppUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -658,10 +658,10 @@ namespace SeniorProject.Migrations
                     dateOfOrder = table.Column<DateTime>(nullable: false),
                     dateOfUsage = table.Column<DateTime>(nullable: false),
                     confirmed = table.Column<bool>(nullable: false),
-                    LabDayId = table.Column<int>(nullable: false),
-                    companyID = table.Column<int>(nullable: false),
-                    UserId = table.Column<int>(nullable: false),
-                    projectId = table.Column<int>(nullable: false)
+                    LabDayId = table.Column<int>(nullable: true),
+                    companyID = table.Column<int>(nullable: true),
+                    UserId = table.Column<int>(nullable: true),
+                    projectId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -793,14 +793,14 @@ namespace SeniorProject.Migrations
                     room = table.Column<string>(nullable: true),
                     price = table.Column<string>(nullable: true),
                     calibration = table.Column<bool>(nullable: false),
-                    inUse = table.Column<bool>(nullable: false),
-                    expired = table.Column<bool>(nullable: false),
-                    remainingQuantity = table.Column<bool>(nullable: false),
-                    quantityUsed = table.Column<int>(nullable: false),
-                    from = table.Column<TimeSpan>(nullable: false),
-                    to = table.Column<TimeSpan>(nullable: false),
-                    ExId = table.Column<int>(nullable: false),
-                    CompanyId = table.Column<int>(nullable: false)
+                    inUse = table.Column<bool>(nullable: true),
+                    expired = table.Column<bool>(nullable: true),
+                    remainingQuantity = table.Column<bool>(nullable: true),
+                    quantityUsed = table.Column<int>(nullable: true),
+                    from = table.Column<TimeSpan>(nullable: true),
+                    to = table.Column<TimeSpan>(nullable: true),
+                    ExId = table.Column<int>(nullable: true),
+                    CompanyId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
