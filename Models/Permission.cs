@@ -70,7 +70,7 @@ namespace SeniorProject.Models
 
 
         [ForeignKey("LabDayId")]
-        public int LabDayId { get; set; }
+        public int? LabDayId { get; set; }
 
         public virtual LabDay LabDay { get; set; }
     }

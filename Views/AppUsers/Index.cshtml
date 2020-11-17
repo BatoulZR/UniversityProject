@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Accounts Requests</h1>
+<h1>Accounts Requests List</h1>
 
 
 <script src="~/js/appUserConfirmButton.js"></script>
@@ -39,12 +39,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.ConcurrencyStamp)
                 </th>*@
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th>
                 Choose abel
-            </th>
+            </th>*@
             <th>
                 Confirmation
             </th>
@@ -57,7 +57,7 @@
                 <th>
                     @Html.DisplayNameFor(model => model.AccessFailedCount)
                 </th>*@
-            <th></th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -92,9 +92,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.ConcurrencyStamp)
         </td>*@
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
+                </td>*@
                 @*<td>
             @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
         </td>
@@ -110,29 +110,29 @@
         <td>
             @Html.DisplayFor(modelItem => item.AccessFailedCount)
         </td>*@
-                <td>
-                    @*<form asp-action="Create">
+                @*<td>
+                    <form asp-action="Create">
                 <div class="form-group">
 
                     <select asp-for="Items" class="form-control" asp-items="ViewBag"></select>
                 </div>
-            </form>*@
+            </form>
 
 
-                    @*<select asp-for="@item.role" name="dropdown">
+                    <select asp-for="@item.role" name="dropdown">
                         <option value=" Admin ">Admin</option>
                         <option value=" Trainee">Trainee</option>
                         <option value=" M2 Student ">M2 Student</option>
                         <option value=" PHD Student">PHD Student</option>
                         <option value=" PHD">PHD</option>
                         <option value=" Assistant">Assistant</option>
-                    </select>*@
-                    @*<select multiple="multiple" asp-for="Role" asp-items=(new SelectList("Admin", "Trainee", "Assistant", "PHD", "PHD Student", "M2 Student"))
-            </select>*@
+                    </select>
+                    <select multiple="multiple" asp-for="Role" asp-items=(new SelectList("Admin", "Trainee", "Assistant", "PHD", "PHD Student", "M2 Student"))
+            </select>
                 </td>
                 <td>
                     <input class="btn btn-primary" type="submit" value="Confirm this request">
-                </td>
+                </td>*@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Confirm Request </a>
                 </td>

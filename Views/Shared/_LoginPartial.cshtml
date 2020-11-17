@@ -67,9 +67,9 @@
 
                 @if (User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value == "Trainee")
                 {
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="traineeHome">TraineeHome</a>
-                    </li>
+                    </li>*@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">TraineeProfile</a>
                     </li>
