@@ -1,11 +1,11 @@
-﻿@model IEnumerable<SeniorProject.Models.Form>
+@model IEnumerable<SeniorProject.Models.Form>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 
-<h1>Forms ' Request List</h1>
+<h1>Forms Requests List</h1>
 
 @*<p>
     <a asp-action="Create">Create New</a>
@@ -34,46 +34,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.firstname)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fathername)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.lastname)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.phone)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.requestType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.speciality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.year)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.requestStatus)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.place)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.duration)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Paragraph)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.LabDay)
-            </th>*@
-            <th></th>
+         </th>
         </tr>
     </thead>
     <tbody>
@@ -85,42 +54,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.firstname)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fathername)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.lastname)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.phone)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.requestType)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.speciality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.year)
-            </td>
+        
             @*<td>
             @Html.DisplayFor(modelItem => item.requestStatus)
         </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.duration)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Paragraph)
-            </td>
+         
             @*<td>
             @Html.DisplayFor(modelItem => item.LabDay.ID)
         </td>*@

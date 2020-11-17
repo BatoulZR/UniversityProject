@@ -29,6 +29,7 @@ namespace SeniorProject.Models
         [DisplayName("Phone Number")]
         public string phone { get; set; }
 
+        [DisplayName("Request Type")]
         public string requestType { get; set; }
 
         [DisplayName("Email")]

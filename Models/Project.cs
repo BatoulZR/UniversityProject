@@ -28,11 +28,11 @@ namespace SeniorProject.Models
         [DisplayName("Fund Amount")]
         public String fundAmount { get; set; }
 
-        [DisplayName("from")]
+        [DisplayName("From")]
         [DataType(DataType.Date)]
         public DateTime from { set; get; }
 
-        [DisplayName("to")]
+        [DisplayName("To")]
         [DataType(DataType.Date)]
         public DateTime to { set; get; }
 
@@ -65,10 +65,10 @@ namespace SeniorProject.Models
         [DataType(DataType.MultilineText)]
         public String others { get; set; }
 
-        public Boolean collaborationOrNot { get; set; }
+        public Boolean? collaborationOrNot { get; set; }
 
         [ForeignKey("LabDayId")]
-        public int LabDayId { get; set; }
+        public int? LabDayId { get; set; }
 
         public virtual LabDay LabDay { get; set; }
 

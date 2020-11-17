@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Item</h1>
+<h1>Create</h1>
 
-<h4>New</h4>
+<h4>Item</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -27,32 +27,29 @@
                 <input asp-for="name" class="form-control" />
                 <span asp-validation-for="name" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="serialNumber" class="control-label"></label>
                 <input asp-for="serialNumber" class="form-control" />
                 <span asp-validation-for="serialNumber" class="text-danger"></span>
             </div>
-
-
             <div class="form-group">
-                <label asp-for="calibration" class="control-label"></label>
-                <input type="checkbox" asp-for="calibration" class="form-control" />
-                <span asp-validation-for="calibration" class="text-danger"></span>
+                <label asp-for="lotNumber" class="control-label"></label>
+                <input asp-for="lotNumber" class="form-control" />
+                <span asp-validation-for="lotNumber" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="weight" class="control-label"></label>
-                <input asp-for="weight" class="form-control">
+                <input asp-for="weight" class="form-control" />
                 <span asp-validation-for="weight" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="units" class="control-label"></label>
-                <select asp-for="units" class="form-control">
-                    <option>grams</option>
-                    <option>litres</option>
-                    <option>item</option>
-                </select>
+                <input asp-for="units" class="form-control" />
                 <span asp-validation-for="units" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -89,6 +86,18 @@
                 <span asp-validation-for="room" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="calibration" /> @Html.DisplayNameFor(model => model.calibration)
+                </label>
+            </div>
+           
+          
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -98,10 +107,6 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
 <script>
     document.getElementById('datePicker').valueAsDate = new Date();

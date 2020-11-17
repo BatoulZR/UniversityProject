@@ -1,4 +1,4 @@
-﻿@model SeniorProject.Models.Item
+@model SeniorProject.Models.Item
 
 @{
     ViewData["Title"] = "Edit";
@@ -22,6 +22,21 @@
                 <label asp-for="name" class="control-label"></label>
                 <input asp-for="name" class="form-control" />
                 <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="serialNumber" class="control-label"></label>
+                <input asp-for="serialNumber" class="form-control" />
+                <span asp-validation-for="serialNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lotNumber" class="control-label"></label>
+                <input asp-for="lotNumber" class="form-control" />
+                <span asp-validation-for="lotNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="weight" class="control-label"></label>
@@ -59,6 +74,11 @@
                 <span asp-validation-for="room" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -69,6 +89,3 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj": {}
+    "C:\\Users\\USER\\Source\\Repos\\UniversityProject\\SeniorProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj": {
+    "C:\\Users\\USER\\Source\\Repos\\UniversityProject\\SeniorProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj",
+        "projectUniqueName": "C:\\Users\\USER\\Source\\Repos\\UniversityProject\\SeniorProject.csproj",
         "projectName": "SeniorProject",
-        "projectPath": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\SeniorProject.csproj",
-        "packagesPath": "C:\\Users\\nour\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nour\\Documents\\GitHub\\UniversityProject\\obj\\",
+        "projectPath": "C:\\Users\\USER\\Source\\Repos\\UniversityProject\\SeniorProject.csproj",
+        "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\USER\\Source\\Repos\\UniversityProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\nour\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,15 +52,17 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.7, )"
+              "version": "[3.1.9, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -93,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

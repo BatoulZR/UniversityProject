@@ -1,10 +1,10 @@
-﻿@model IEnumerable<SeniorProject.Models.Project>
+@model IEnumerable<SeniorProject.Models.Project>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Projects</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -30,33 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.to)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.reasearchAssistantFees)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.congress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.fieldFees)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.publicationAndPatentFees)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.consumables)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.machinesAndEquipements)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.others)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.collaborationOrNot)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LabDay)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
@@ -81,33 +55,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.to)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.reasearchAssistantFees)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.congress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fieldFees)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.publicationAndPatentFees)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.consumables)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.machinesAndEquipements)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.others)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.collaborationOrNot)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LabDay.ID)
-            </td>
+          
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |

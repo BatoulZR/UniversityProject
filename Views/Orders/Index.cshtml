@@ -1,11 +1,11 @@
-﻿@model IEnumerable<SeniorProject.Models.Order>
+@model IEnumerable<SeniorProject.Models.Order>
 
 @{
     ViewData["Title"] = "Index";
 }
 
 <br />
-<h1>Orders ' Request List</h1>
+<h1>Orders Request List</h1>
 <br />
 
 @*<p>
@@ -17,36 +17,28 @@
             <th>
                 @Html.DisplayNameFor(model => model.productName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.supervisorName)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.quantity)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.specifityNotes)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.dateOfOrder)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dateOfUsage)
-            </th>
+
             @*<th>
-                @Html.DisplayNameFor(model => model.confirmed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LabDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.companyID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.project)
-            </th>
+            @Html.DisplayNameFor(model => model.confirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LabDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.companyID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User)
+        </th>*@
+
             <th></th>
         </tr>
     </thead>
@@ -56,21 +48,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.productName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.supervisorName)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.specifityNotes)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.dateOfOrder)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dateOfUsage)
-            </td>
+           
             @*<td>
                 @Html.DisplayFor(modelItem => item.confirmed)
             </td>

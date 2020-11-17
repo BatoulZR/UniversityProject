@@ -25,6 +25,36 @@ namespace SeniorProject.Controllers
             return View(await _context.Item.ToListAsync());
         }
 
+        public IActionResult ConsumableIndex()
+        {
+            var list = _context.Item.ToList<Item>();
+
+            return View(list);
+        }
+
+        public IActionResult GlasswareIndex()
+        {
+            var list = _context.Item.ToList<Item>();
+
+            return View(list);
+        }
+
+        public IActionResult MachineIndex()
+        {
+            var list = _context.Item.ToList<Item>();
+
+            return View(list);
+        }
+
+
+        public IActionResult FurnitureIndex()
+        {
+            var list = _context.Item.ToList<Item>();
+
+            return View(list);
+        }
+
+
         // GET: Items/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -34,6 +64,8 @@ namespace SeniorProject.Controllers
             }
 
             var item = await _context.Item
+                .Include(i => i.Experiment)
+                .Include(i => i.company)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (item == null)
             {
@@ -46,50 +78,31 @@ namespace SeniorProject.Controllers
         // GET: Items/Create
         public IActionResult Create()
         {
+            ViewData["ExId"] = new SelectList(_context.Experiment, "ID", "ID");
+            ViewData["CompanyId"] = new SelectList(_context.Company, "ID", "ID");
             return View();
         }
 
-        // GET: Items/Create
-        public IActionResult CreateMachine()
-        {
-            return View();
-        }
-
-        // GET: Items/Create
-        public IActionResult CreateItem()
-        {
-            return View();
-        }
-
-        // GET: Items/Create
-        public IActionResult CreateFurniture()
-        {
-            return View();
-        }
-
-
-        // GET: Items/Create
-        public IActionResult CreateConsumable()
-        {
-            return View();
-        }
         // POST: Items/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
+        public async Task<IActionResult> Create([Bind("ID,type,name,Capacity,serialNumber,lotNumber,weight,units,quantity,arrivalDate,expiryDate,notes,room,price,calibration,inUse,expired,remainingQuantity,quantityUsed,from,to,ExId,CompanyId")] Item item)
         {
             if (ModelState.IsValid)
             {
+                
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ExId"] = new SelectList(_context.Experiment, "ID", "ID", item.ExId);
+            ViewData["CompanyId"] = new SelectList(_context.Company, "ID", "ID", item.CompanyId);
             return View(item);
         }
 
-        // GET: Item/Edit/5
+        // GET: Items/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,6 +115,8 @@ namespace SeniorProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["ExId"] = new SelectList(_context.Experiment, "ID", "ID", item.ExId);
+            ViewData["CompanyId"] = new SelectList(_context.Company, "ID", "ID", item.CompanyId);
             return View(item);
         }
 
@@ -110,7 +125,7 @@ namespace SeniorProject.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,type,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,type,name,Capacity,serialNumber,lotNumber,weight,units,quantity,arrivalDate,expiryDate,notes,room,price,calibration,inUse,expired,remainingQuantity,quantityUsed,from,to,ExId,CompanyId")] Item item)
         {
             if (id != item.ID)
             {
@@ -137,6 +152,8 @@ namespace SeniorProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ExId"] = new SelectList(_context.Experiment, "ID", "ID", item.ExId);
+            ViewData["CompanyId"] = new SelectList(_context.Company, "ID", "ID", item.CompanyId);
             return View(item);
         }
 
@@ -149,6 +166,8 @@ namespace SeniorProject.Controllers
             }
 
             var item = await _context.Item
+                .Include(i => i.Experiment)
+                .Include(i => i.company)
                 .FirstOrDefaultAsync(m => m.ID == id);
             if (item == null)
             {
@@ -173,91 +192,5 @@ namespace SeniorProject.Controllers
         {
             return _context.Item.Any(e => e.ID == id);
         }
-
-        public IActionResult consumables ()
-        {
-            var list = _context.Item.ToList<Item>();
-           
-            return View(list);
-        }
-
-        public IActionResult glassAndPlastic()
-        {
-            var list = _context.Item.ToList<Item>();
-
-            return View(list);
-        }
-
-        public IActionResult machines()
-        {
-            var list = _context.Item.ToList<Item>();
-
-            return View(list);
-        }
-
-
-        public IActionResult furnitures()
-        {
-            var list = _context.Item.ToList<Item>();
-
-            return View(list);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateConsumable([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                item.type = "Consumable";
-                _context.Add(item);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(consumables));
-            }
-            return View(item);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateGlass([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                item.type = "Item";
-                _context.Add(item);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(glassAndPlastic));
-            }
-            return View(item);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateFurniture([Bind("ID,name,weight,units,quantity,arrivalDate,expiryDate,notes,room")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                item.type = "Furniture";
-                _context.Add(item);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(furnitures));
-            }
-            return View(item);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateMachine([Bind("ID,name,serialNumber,calibration,quantity,arrivalDate,notes,room")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                item.type = "Machine";
-                _context.Add(item);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(machines));
-            }
-            return View(item);
-        }
-
     }
 }
