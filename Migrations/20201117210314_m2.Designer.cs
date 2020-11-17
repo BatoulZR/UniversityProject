@@ -3,19 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SeniorProject.Data;
 
 namespace SeniorProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201117210314_m2")]
+    partial class m2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -639,10 +641,10 @@ namespace SeniorProject.Migrations
                     b.Property<string>("Capacity")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CompanyId")
+                    b.Property<int>("CompanyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExId")
+                    b.Property<int>("ExId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("arrivalDate")
@@ -651,16 +653,16 @@ namespace SeniorProject.Migrations
                     b.Property<bool>("calibration")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("expired")
+                    b.Property<bool>("expired")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("expiryDate")
                         .HasColumnType("date");
 
-                    b.Property<TimeSpan?>("from")
+                    b.Property<TimeSpan>("from")
                         .HasColumnType("time");
 
-                    b.Property<bool?>("inUse")
+                    b.Property<bool>("inUse")
                         .HasColumnType("bit");
 
                     b.Property<string>("lotNumber")
@@ -678,10 +680,10 @@ namespace SeniorProject.Migrations
                     b.Property<int?>("quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("quantityUsed")
+                    b.Property<int>("quantityUsed")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("remainingQuantity")
+                    b.Property<bool>("remainingQuantity")
                         .HasColumnType("bit");
 
                     b.Property<string>("room")
@@ -690,7 +692,7 @@ namespace SeniorProject.Migrations
                     b.Property<string>("serialNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeSpan?>("to")
+                    b.Property<TimeSpan>("to")
                         .HasColumnType("time");
 
                     b.Property<string>("type")
@@ -933,10 +935,10 @@ namespace SeniorProject.Migrations
                     b.Property<int?>("AppUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LabDayId")
+                    b.Property<int>("LabDayId")
                         .HasColumnType("int");
 
-                    b.Property<bool?>("collaborationOrNot")
+                    b.Property<bool>("collaborationOrNot")
                         .HasColumnType("bit");
 
                     b.Property<bool>("congress")
@@ -1317,11 +1319,15 @@ namespace SeniorProject.Migrations
                 {
                     b.HasOne("SeniorProject.Models.Company", "company")
                         .WithMany("Items")
-                        .HasForeignKey("CompanyId");
+                        .HasForeignKey("CompanyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("SeniorProject.Models.Experiment", "Experiment")
                         .WithMany("Items")
-                        .HasForeignKey("ExId");
+                        .HasForeignKey("ExId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SeniorProject.Models.MeetingPresence", b =>
@@ -1398,7 +1404,9 @@ namespace SeniorProject.Migrations
 
                     b.HasOne("SeniorProject.Models.LabDay", "LabDay")
                         .WithMany("Projects")
-                        .HasForeignKey("LabDayId");
+                        .HasForeignKey("LabDayId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SeniorProject.Models.ProjectCollaboration", b =>
