@@ -29,6 +29,24 @@ namespace SeniorProject.Controllers
             
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString)
+        {
+
+            ViewData["CurrentFilter"] = searchString;
+            var orders = from o in _context.Order
+                        select o;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                orders = orders.Where(o => o.productName.Contains(searchString));
+
+            }
+
+            return View(await orders.AsNoTracking().Where(o => o.productName.Equals(false)).ToListAsync());
+
+        }
+
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
