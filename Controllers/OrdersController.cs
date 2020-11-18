@@ -22,8 +22,7 @@ namespace SeniorProject.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-                var applicationDbContext = _context.Order.Include(o => o.LabDay).Include(o => o.User).Include(o => o.project)
-                .Where(o => o.confirmed == false) ;
+                var applicationDbContext = _context.Order.Include(o => o.LabDay).Include(o => o.User).Include(o => o.project) ;
                 return View(await applicationDbContext.ToListAsync());
             
             
