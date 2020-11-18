@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SeniorProject.Models;
@@ -32,7 +33,7 @@ namespace SeniorProject.Controllers
         {
             return View();
         }
-
+        [Authorize(Policy = "Admin")]
         public IActionResult adminHome()
         {
             return View();
@@ -42,27 +43,27 @@ namespace SeniorProject.Controllers
         {
             return View();
         }
-
+        [Authorize(Policy = "PhdStudent")]
         public IActionResult PHDstudentHome()
         {
             return View();
         }
-
+        [Authorize(Policy = "Assistant")]
         public IActionResult assistantHome()
         {
             return View();
         }
-
+        [Authorize(Policy = "Trainee")]
         public IActionResult traineeHome()
         {
             return View();
         }
-
+        [Authorize(Policy = "PHD")]
         public IActionResult PHDHome()
         {
             return View();
         }
-
+        [Authorize(Policy = "M2Student")]
         public IActionResult M2Home()
         {
             return View();

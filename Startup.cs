@@ -49,13 +49,13 @@ namespace SeniorProject
                                  policy.RequireClaim("Role", "M2Student"));
 
                 options.AddPolicy("PhdStudent", policy =>
-                                 policy.RequireClaim("Role", "PhdStudent"));
+                                 policy.RequireClaim("Role", "PHDstudent"));
 
                 options.AddPolicy("Admin", policy =>
-                                 policy.RequireClaim("Role", "Admin"));
+                                 policy.RequireClaim("Role", "admin"));
 
-                options.AddPolicy("Supervisor", policy =>
-                                 policy.RequireClaim("Role", "Supervisor"));
+                options.AddPolicy("PHD", policy =>
+                                 policy.RequireClaim("Role", "PHD"));
 
 
             });
